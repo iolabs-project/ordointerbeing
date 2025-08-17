@@ -3,4 +3,9 @@
 $primary-font: "Cormorant Garamond", serif;
 $secondary-font: "Open Sans", sans-serif;
 
+@import "./global.scss";
+
 @import "./components/navbar.scss";
+@import "./components/footer.scss";
+
+@import "./pages/home.scss";
