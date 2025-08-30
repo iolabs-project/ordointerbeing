@@ -1,5 +1,5 @@
 .footer {
-  background-color: #E9DCD1;
+  background-color: #e9dcd1;
 
   .wrapper {
     display: flex;
@@ -30,6 +30,142 @@
         img {
           width: 15%;
           height: 50px;
+        }
+      }
+
+      .bottom-group {
+        display: flex;
+        width: 100%;
+        gap: 100px;
+        margin-top: 30px;
+
+        .left-group {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          width: 35%;
+
+          .title {
+            font-family: $secondary-font;
+            font-size: 24px;
+            font-weight: 400;
+            color: black;
+          }
+
+          .link-text {
+            font-family: $secondary-font;
+            text-decoration: underline;
+            font-size: 18px;
+            font-weight: 400;
+            color: #96644D;
+          }
+
+          .group-text {
+            display: flex;
+            gap: 10px;
+            color: black;
+            font-family: $secondary-font;
+            font-size: 18px;
+            font-weight: 400;
+            align-items: center;
+
+            &.mb {
+              margin-bottom: 20px;
+            }
+          }
+
+          .btn-footer {
+            margin-top: 50px;
+            padding: 12px 30px;
+            border-radius: 10px;
+            color: #D2C0A7;
+            background-color: #96644D;
+            font-family: $secondary-font;
+            font-size: 18px;
+            width: max-content;
+            cursor: pointer;
+          }
+        }
+
+        .middle-group {
+          display: flex;
+          flex-direction: column;
+          gap: 15px;
+          width: 25%;
+
+          .title {
+            font-family: $secondary-font;
+            font-size: 24px;
+            font-weight: 400;
+            color: black;
+          }
+
+          .group-text {
+            display: flex;
+            gap: 10px;
+            color: black;
+            font-family: $secondary-font;
+            font-size: 18px;
+            font-weight: 400;
+            align-items: center;
+
+            i {
+              width: 20px;
+            }
+          }
+        }
+
+        .right-group {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          width: 40%;
+
+          .title {
+            font-family: $secondary-font;
+            font-size: 24px;
+            font-weight: 400;
+            color: black;
+          }
+
+          .link-text {
+            font-family: $secondary-font;
+            font-size: 18px;
+            font-weight: 400;
+            color: #96644D;
+            cursor: pointer;
+
+            span {
+              color: black;
+            }
+
+            &.read-more {
+              margin-bottom: 30px;
+            }
+          }
+        }
+      }
+
+      .bottom-group2 {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        margin-top: 40px;
+
+        .left {
+          display: flex;
+          color: black;
+          font-family: $secondary-font;
+          font-weight: 600;
+          font-size: 16px;
+          gap: 50px;
+        }
+
+        .right {
+          color: black;
+          font-family: $secondary-font;
+          font-weight: 400;
+          font-size: 16px;
         }
       }
     }
