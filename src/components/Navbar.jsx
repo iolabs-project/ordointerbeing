@@ -1,6 +1,26 @@
-import React from "react";
+"use client";
+
+import { useEffect, useState } from "react";
+import { getPostNames } from "@/lib/wp";
 
 const Navbar = () => {
+  const [tentang, setTentang] = useState([]);
+  const [isTentangOpen, setIsTentangOpen] = useState(false);
+
+  useEffect(() => {
+    const fetchPostNames = async () => {
+      const filter = {
+        categories: 155
+      }
+      const names = await getPostNames(filter);
+      setTentang(names);
+    };
+
+    fetchPostNames();
+  }, []);
+
+console.log(tentang);
+
   return (
     <nav className="navbar">
       <div className="wrapper">

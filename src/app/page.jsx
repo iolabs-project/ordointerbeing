@@ -1,27 +1,19 @@
-import Navbar from "./components/Navbar";
-import HeroSection from "./pages/Home/HeroSection";
-import SectionOne from "./pages/Home/SectionOne";
-import SectionTwo from "./pages/Home/SectionTwo";
-import SectionThree from "./pages/Home/SectionThree";
-import SectionFour from "./pages/Home/SectionFour";
-import SectionFive from "./pages/Home/SectionFive";
-import Footer from "./components/Footer";
+import HeroSection from "../components/home/HeroSection";
+import SectionOne from "../components/home/SectionOne";
+import SectionTwo from "../components/home/SectionTwo";
+import SectionThree from "../components/home/SectionThree";
+import SectionFour from "../components/home/SectionFour";
+import SectionFive from "../components/home/SectionFive";
 
 export default function Home() {
   return (
-    <div>
-      <Navbar />
-
-      <div className="home-section">
-        <HeroSection />
-        <SectionOne />
-        <SectionTwo />
-        <SectionThree />
-        <SectionFour />
-        <SectionFive />
-      </div>
-
-      <Footer />
+    <div className="home-section">
+      <HeroSection />
+      <SectionOne />
+      <SectionTwo />
+      <SectionThree />
+      <SectionFour />
+      <SectionFive />
     </div>
   );
 }
