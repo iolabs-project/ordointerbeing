@@ -19,8 +19,6 @@ const Navbar = () => {
     fetchPostNames();
   }, []);
 
-console.log(tentang);
-
   return (
     <nav className="navbar">
       <div className="wrapper">

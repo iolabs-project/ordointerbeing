@@ -37,14 +37,14 @@
       flex-direction: column;
 
       .info-box {
-        .info-title {
+        .title {
           display: flex;
           justify-content: space-between;
           align-items: center;
           // padding: 20px;
           p {
             font-family: $primary-font;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             font-weight: bold;
             color: #050505;
             margin: 0;
@@ -52,12 +52,54 @@
 
           a {
             font-family: $secondary-font;
-            font-size: 0.9rem;
+            font-size: 1rem;
             color: #050505;
             text-decoration: none;
 
             &:hover {
               text-decoration: underline;
+            }
+          }
+        }
+
+        .info-content {
+          display: flex;
+          flex-direction: column;
+
+          .info-card {
+            margin-bottom: 20px;
+
+            img {
+              width: 100%;
+              height: auto;
+              border-radius: 8px;
+              margin-bottom: 10px;
+            }
+          }
+
+          .info-title {
+            font-family: $secondary-font;
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #050505;
+            margin: 0 0 5px 0;
+            text-decoration: none;
+          }
+
+          .info-meta{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            p {
+              font-family: $secondary-font;
+              font-size: 1rem;
+              color: #7d7d7d;
+              margin: 0;
+            }
+
+            .info-category{
+              text-transform: capitalize;
             }
           }
         }
@@ -131,3 +173,4 @@
     }
   }
 }
+

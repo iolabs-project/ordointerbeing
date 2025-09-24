@@ -22,3 +22,11 @@ export async function getPost(id) {
   if (!res.ok) throw new Error("Failed to fetch post");
   return res.json();
 }
+
+export async function getMedias(filter = {}) {
+  const query = new URLSearchParams(filter).toString();
+  const res = await fetch(`${url}media?${query}`);
+
+  if (!res.ok) throw new Error("Failed to fetch media");
+  return res.json();
+}

@@ -1,9 +1,28 @@
-import { getPost } from "@/lib/wp";
+import { getPost, getPosts, getMedias } from "@/lib/wp";
+import InfoCard from "@/components/posts/InfoCard";
+import MusicCard from "@/components/posts/MusicCard";
 
 export default async function Post({ params }) {
   const { id } = await params;
   const post = await getPost(id);
+  const infos = await getPosts(
+    { 
+      per_page: 2,
+      _fields: "id,title,content,date,categories,_embedded, _links",
+      orderby: "date",
+      _embed: "wp:term",
+    }
+  );
 
+  const musics = await getMedias(
+    { 
+      per_page: 2,
+      media_type: "audio",
+      orderby: "date",
+    }
+  );
+
+  //* Post Section Processing
   // Regex to capture <figure class="hero"> ... </figure>
   const heroRegex = /<figure[^>]*class="[^"]*hero[^"]*"[^>]*>[\s\S]*?<\/figure>/i;
   const match = post.content.rendered.match(heroRegex);
@@ -24,50 +43,68 @@ export default async function Post({ params }) {
       <p class="date"><i class="fa solid fa-clock"></i> ${date}</p>
     </div>
 `;
-contentWithoutHero = insertMarkup + contentWithoutHero;
+  contentWithoutHero = insertMarkup + contentWithoutHero;
+  //* End Post Section Processing
 
-  console.log(post);
 
-  return <div className="post-section">
-    <div className="hero-figure" dangerouslySetInnerHTML={{ __html: heroHTML }}>
-
-    </div>
-    {/* <div className="post-meta">
+  return (
+    <div className="post-section">
+      <div className="hero-figure" dangerouslySetInnerHTML={{ __html: heroHTML }}></div>
+      {/* <div className="post-meta">
         <p className="author"><i className="fa-solid fa-user"></i> Posted by  <strong>{author}</strong></p>
         <p className="date"><i className="fa solid fa-clock"></i> {date}</p>
     </div> */}
-    <div className="container">
+      <div className="container">
         <div className="left" dangerouslySetInnerHTML={{ __html: contentWithoutHero }} />
         <div className="right">
-            <div className="info-box">
-                <div className="info-title">
-                    <p>Sekilas Info</p>
-                    <a href="#">Lihat Semua</a>
-                </div>
-                <div className="info-content">
-
-                </div>
+          <div className="info-box">
+            <div className="title">
+              <p>Sekilas Info</p>
+              <a href="#">Lihat Semua</a>
             </div>
-            <div className="music-box">
-                <div className="music-title">
-                    <p>Let's hear music</p>
-                    <a href="#">Lihat Semua</a>
-                </div>
-                <div className="music-content">
-
-                </div>
+            <div className="info-content">
+                {infos.map((info) => (
+                  <InfoCard
+                    key={info.id} 
+                    id={info.id}
+                    title={info.title.rendered}
+                    content={info.content.rendered}
+                    date={new Date(info.date).toLocaleDateString("en-US", {
+                      day: "numeric",
+                      month: "long",
+                      year: "numeric",
+                    })}
+                    category={info._embedded?.["wp:term"][0]?.flat().map(cat => cat.name) || []}
+                    link={info._links?.self?.[0]?.href || "#"}
+                  />
+                ))}
             </div>
-
-            <div className="facebook-box">
-                <div className="facebook-title">
-                    <p>Facebook Post</p>
-                    <a href="#">Lihat Semua</a>
-                </div>
-                <div className="facebook-content">
-
-                </div>
+          </div>
+          <div className="music-box">
+            <div className="music-title">
+              <p>Let's hear music</p>
+              <a href="#">Lihat Semua</a>
             </div>
+            <div className="music-content">
+                {musics.map((music) => (
+                  <MusicCard
+                    key={music.id}
+                    id={music.id}
+                    title={music.title.rendered}
+                  />
+                ))}
+            </div>  
+          </div>
+
+          <div className="facebook-box">
+            <div className="facebook-title">
+              <p>Facebook Post</p>
+              <a href="#">Lihat Semua</a>
+            </div>
+            <div className="facebook-content"></div>
+          </div>
         </div>
+      </div>
     </div>
-  </div>;
+  );
 }
