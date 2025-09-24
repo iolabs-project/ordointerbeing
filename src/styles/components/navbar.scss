@@ -34,6 +34,8 @@
       gap: 30px;
 
       .tabs {
+        position: relative;
+
         a {
           font-size: 25px;
           font-weight: 400;
@@ -44,6 +46,57 @@
           &:hover {
             text-decoration: underline;
             transform: scale(1.05);
+          }
+        }
+
+        &.dropdown {
+          // Create an invisible bridge to prevent dropdown from disappearing
+          &::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: transparent;
+            z-index: 999;
+          }
+
+          .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            min-width: 250px;
+            z-index: 1000;
+            padding: 8px 0;
+            margin-top: 2px;
+
+            .dropdown-item {
+              display: block;
+              padding: 10px;
+              font-size: 13px;
+              font-weight: 600;
+              font-family: $secondary-font;
+              color: #333;
+              text-decoration: none;
+              transition: background-color 0.2s ease;
+              border-bottom: 1px solid #f0f0f0;
+
+              &:last-child {
+                border-bottom: none;
+              }
+
+              &:hover {
+                background-color: #f8f8f8;
+                color: #000;
+                transform: none;
+                text-decoration: none;
+              }
+            }
           }
         }
       }

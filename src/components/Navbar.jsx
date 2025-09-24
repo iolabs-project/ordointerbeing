@@ -29,8 +29,19 @@ console.log(tentang);
           <p className="text-1">Komunitas Zen Plum Village</p>
         </a>
         <div className="menu-tabs">
-          <div className="tabs">
+          <div className="tabs dropdown"
+               onMouseEnter={() => setIsTentangOpen(true)}
+               onMouseLeave={() => setIsTentangOpen(false)}>
             <a href="#">Tentang</a>
+            {isTentangOpen && tentang.length > 0 && (
+              <div className="dropdown-menu">
+                {tentang.map((post) => (
+                  <a key={post.id} href={`/posts/${post.id}`} className="dropdown-item">
+                    {post.title.rendered}
+                  </a>
+                ))}
+              </div>
+            )}
           </div>
           <div className="tabs">
             <a href="#">Praktik</a>
