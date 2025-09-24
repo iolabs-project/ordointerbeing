@@ -86,7 +86,7 @@
             text-decoration: none;
           }
 
-          .info-meta{
+          .info-meta {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -98,7 +98,7 @@
               margin: 0;
             }
 
-            .info-category{
+            .info-category {
               text-transform: capitalize;
             }
           }
@@ -106,14 +106,14 @@
       }
 
       .music-box {
-        .music-title {
+        .title {
           display: flex;
           justify-content: space-between;
           align-items: center;
           // padding: 20px;
           p {
             font-family: $primary-font;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             font-weight: bold;
             color: #050505;
             margin: 0;
@@ -121,12 +121,59 @@
 
           a {
             font-family: $secondary-font;
-            font-size: 0.9rem;
+            font-size: 1rem;
             color: #050505;
             text-decoration: none;
 
             &:hover {
               text-decoration: underline;
+            }
+          }
+        }
+
+        .music-content {
+          display: flex;
+          flex-direction: column;
+
+          .music-card {
+            margin-bottom: 20px;
+
+            img {
+              width: 100%;
+              height: auto;
+              border-radius: 8px;
+              margin-bottom: 10px;
+            }
+
+            .music-title {
+              font-family: $secondary-font;
+              font-size: 1.3rem;
+              font-weight: bold;
+              color: #050505;
+              margin: 0 0 5px 0;
+              text-decoration: none;
+            }
+
+            .music-description {
+              font-family: $secondary-font;
+              font-size: 0.8rem;
+              color: #747474;
+              margin: 0 0 5px 0;
+            }
+
+
+            .music-link{
+              //change into button
+              
+              font-family: $secondary-font;
+              display: inline-block;
+              padding: 8px 16px;
+              background-color: #96644D;
+              color: #FFF8EF;
+              text-decoration: none;
+              border-radius: 32px;
+              cursor: pointer;
+
             }
           }
         }
@@ -173,4 +220,3 @@
     }
   }
 }
-

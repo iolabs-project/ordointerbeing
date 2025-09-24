@@ -81,7 +81,7 @@ export default async function Post({ params }) {
             </div>
           </div>
           <div className="music-box">
-            <div className="music-title">
+            <div className="title">
               <p>Let's hear music</p>
               <a href="#">Lihat Semua</a>
             </div>
@@ -91,6 +91,8 @@ export default async function Post({ params }) {
                     key={music.id}
                     id={music.id}
                     title={music.title.rendered}
+                    desc={music.caption.rendered}
+                    url={music.guid.rendered}
                   />
                 ))}
             </div>  
