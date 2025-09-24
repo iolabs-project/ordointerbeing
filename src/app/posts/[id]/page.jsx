@@ -39,7 +39,7 @@ export default async function Post({ params }) {
 
   const insertMarkup = `
     <div class="post-meta">
-      <p class="author"><i class="fa-solid fa-user"></i> Posted by  <strong>${author}</strong></p>
+      <p class="author"><i class="fa-solid fa-user"></i> Posted by  <span>${author}</span></p>
       <p class="date"><i class="fa solid fa-clock"></i> ${date}</p>
     </div>
 `;
