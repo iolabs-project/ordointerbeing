@@ -23,12 +23,8 @@ export default async function Post({ params }) {
   );
 
   //* Post Section Processing
-  // Regex to capture <figure class="hero"> ... </figure>
-  const heroRegex = /<figure[^>]*class="[^"]*hero[^"]*"[^>]*>[\s\S]*?<\/figure>/i;
-  const match = post.content.rendered.match(heroRegex);
-
-  const heroHTML = match ? match[0] : null;
-  let contentWithoutHero = post.content.rendered.replace(heroRegex, "");
+  const heroURL = post.jetpack_featured_media_url || "";
+  let content = post.content.rendered;
 
   const author = post._embedded?.author?.[0]?.name || "Unknown";
   const date = new Date(post.date).toLocaleDateString("en-US", {
@@ -38,24 +34,27 @@ export default async function Post({ params }) {
   });
 
   const insertMarkup = `
-    <div class="post-meta">
-      <p class="author"><i class="fa-solid fa-user"></i> Posted by  <strong>${author}</strong></p>
-      <p class="date"><i class="fa solid fa-clock"></i> ${date}</p>
-    </div>
-`;
-  contentWithoutHero = insertMarkup + contentWithoutHero;
+      <div class="post-meta">
+        <p class="author"><i class="fa-solid fa-user"></i> Posted by  <strong>${author}</strong></p>
+        <p class="date"><i class="fa solid fa-clock"></i> ${date}</p>
+      </div>
+  `;
+
+  content = insertMarkup + content;
   //* End Post Section Processing
 
 
   return (
     <div className="post-section">
-      <div className="hero-figure" dangerouslySetInnerHTML={{ __html: heroHTML }}></div>
+      <div className="hero-figure">
+        <img src={heroURL} alt="" />
+      </div>
       {/* <div className="post-meta">
         <p className="author"><i className="fa-solid fa-user"></i> Posted by  <strong>{author}</strong></p>
         <p className="date"><i className="fa solid fa-clock"></i> {date}</p>
     </div> */}
       <div className="container">
-        <div className="left" dangerouslySetInnerHTML={{ __html: contentWithoutHero }} />
+        <div className="left" dangerouslySetInnerHTML={{ __html: content }} />
         <div className="right">
           <div className="info-box">
             <div className="title">
