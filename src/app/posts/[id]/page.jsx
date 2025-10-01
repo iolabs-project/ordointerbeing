@@ -80,6 +80,7 @@ export default async function Post({ params }) {
                 ))}
             </div>
           </div>
+          <div className="separator"></div>
           <div className="music-box">
             <div className="title">
               <p>Let's hear music</p>
@@ -97,7 +98,7 @@ export default async function Post({ params }) {
                 ))}
             </div>  
           </div>
-
+          <div className="separator"></div>
           <div className="facebook-box">
             <div className="facebook-title">
               <p>Facebook Post</p>

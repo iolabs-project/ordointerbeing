@@ -7,7 +7,7 @@ const InfoCard = ({ id, title, category, date, content }) => {
       <img src={img} alt="" />
       <a href={`/posts/${id}`} className="info-title">{title}</a>
       <div className="info-meta">
-        <span className="info-category">{category}</span>
+        <span className={`info-category ${category || ''}`}>{category}</span>
         <span className="info-date">{date}</span>
       </div>
     </div>
