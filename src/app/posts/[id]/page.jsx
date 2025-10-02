@@ -14,11 +14,12 @@ export default async function Post({ params }) {
     }
   );
 
-  const musics = await getMedias(
+  const musics = await getPosts(
     { 
       per_page: 2,
-      media_type: "audio",
+      categories: 215,
       orderby: "date",
+      _embed: true,
     }
   );
 
@@ -49,10 +50,6 @@ export default async function Post({ params }) {
       <div className="hero-figure">
         <img src={heroURL} alt="" />
       </div>
-      {/* <div className="post-meta">
-        <p className="author"><i className="fa-solid fa-user"></i> Posted by  <strong>{author}</strong></p>
-        <p className="date"><i className="fa solid fa-clock"></i> {date}</p>
-    </div> */}
       <div className="container">
         <div className="left" dangerouslySetInnerHTML={{ __html: content }} />
         <div className="right">
@@ -91,8 +88,9 @@ export default async function Post({ params }) {
                     key={music.id}
                     id={music.id}
                     title={music.title.rendered}
-                    desc={music.caption.rendered}
-                    url={music.guid.rendered}
+                    desc={music.excerpt.rendered}
+                    content={music.content.rendered}
+                    img={music.jetpack_featured_media_url || "/assets/default-music.png"}
                   />
                 ))}
             </div>  
