@@ -1,6 +1,7 @@
 import { getPost, getPosts, getMedias } from "@/lib/wp";
 import InfoCard from "@/components/posts/InfoCard";
 import MusicCard from "@/components/posts/MusicCard";
+import PostContent from "@/components/posts/PostContent";
 
 export default async function Post({ params }) {
   const { id } = await params;
@@ -36,7 +37,7 @@ export default async function Post({ params }) {
 
   const insertMarkup = `
       <div class="post-meta">
-        <p class="author"><i class="fa-solid fa-user"></i> Posted by  <strong>${author}</strong></p>
+        <p class="author"><i class="fa-solid fa-user"></i> Posted by <strong>${author}</strong></p>
         <p class="date"><i class="fa solid fa-clock"></i> ${date}</p>
       </div>
   `;
@@ -51,7 +52,7 @@ export default async function Post({ params }) {
         <img src={heroURL} alt="" />
       </div>
       <div className="container">
-        <div className="left" dangerouslySetInnerHTML={{ __html: content }} />
+        <PostContent content={content} />
         <div className="right">
           <div className="info-box">
             <div className="title">

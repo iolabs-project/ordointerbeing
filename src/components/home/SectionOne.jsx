@@ -18,9 +18,17 @@ const SectionOne = () => {
           Mahayana Zen / chan (禪) Plum Village.
         </p>
 
-        <a href="" className="button">
-          Tentang Plum Village
-        </a>
+        <div className="wrapper-button">
+          <a href="/posts/271" className="button">
+            Tentang Plum Village
+          </a>
+          <a href="https://zenplumvillage.net/" className="button">
+            Kelas Moodle
+          </a>
+          <a href="https://ordointerbeing.myr.id/" className="button">
+            Kelas Daring
+          </a>
+        </div>
       </div>
     </div>
   );

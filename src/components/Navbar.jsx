@@ -22,7 +22,7 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="wrapper">
-        <a className="left-side">
+        <a className="left-side" href="/">
           <img src="/assets/navbar-logo.png" alt="Navbar logo" />
           <p className="text-1">Komunitas Zen Plum Village</p>
         </a>
