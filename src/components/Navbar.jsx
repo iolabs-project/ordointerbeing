@@ -10,7 +10,8 @@ const Navbar = () => {
   useEffect(() => {
     const fetchPostNames = async () => {
       const filter = {
-        categories: 155
+        categories: 155,
+        exclude: 6348
       }
       const names = await getPostNames(filter);
       setTentang(names);
