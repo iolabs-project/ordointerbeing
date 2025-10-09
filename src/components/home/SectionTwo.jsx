@@ -1,6 +1,13 @@
 import React from "react";
+import { getPosts } from "@/lib/wp";
 
-const SectionTwo = () => {
+const SectionTwo = async () => {
+  const news = await getPosts({
+    per_page: 4,
+    categories: 165,
+    orderby: "date",
+    _embed: true,
+  });
   return (
     <div className="section-two">
       <div className="wrapper">
@@ -13,8 +20,7 @@ const SectionTwo = () => {
           </div>
           <div className="right">
             <p className="text-1">
-              Dapatkan <b>kabar terbaru</b> tentang kegiatan, acara, dan
-              perkembangan komunitas, serta
+              Dapatkan <b>kabar terbaru</b> tentang kegiatan, acara, dan perkembangan komunitas, serta
               <br />
               inspirasi dari praktik dan perjalanan spiritual bersama.
             </p>
@@ -23,28 +29,46 @@ const SectionTwo = () => {
 
         <div className="bottom">
           <div className="left">
-            <img src="assets/home-section2-1.webp" alt="" />
+            <img src={news[0]?.jetpack_featured_media_url} alt="" />
           </div>
           <div className="right">
             <div className="card-box">
-              <img src="assets/home-section2-2.webp" alt="" />
+              <img src={news[1]?.jetpack_featured_media_url} alt="" />
               <div className="group-text">
-                <p className="text-1">Penahbisan Novis Aprikot Putih</p>
-                <p className="text-2">06.00</p>
+                <p className="text-1">{news[1]?.title.rendered}</p>
+                <p className="text-2">
+                  {new Date(news[1]?.date).toLocaleDateString("id-ID", {
+                    day: "2-digit",
+                    month: "long",
+                    year: "numeric",
+                  })}
+                </p>
               </div>
             </div>
             <div className="card-box">
-              <img src="assets/home-section2-2.webp" alt="" />
+              <img src={news[2]?.jetpack_featured_media_url} alt="" />
               <div className="group-text">
-                <p className="text-1">Penahbisan Novis Aprikot Putih</p>
-                <p className="text-2">06.00</p>
+                <p className="text-1">{news[2]?.title.rendered}</p>
+                <p className="text-2">
+                  {new Date(news[2]?.date).toLocaleDateString("id-ID", {
+                    day: "2-digit",
+                    month: "long",
+                    year: "numeric",
+                  })}
+                </p>
               </div>
             </div>
             <div className="card-box">
-              <img src="assets/home-section2-2.webp" alt="" />
+              <img src={news[3]?.jetpack_featured_media_url} alt="" />
               <div className="group-text">
-                <p className="text-1">Penahbisan Novis Aprikot Putih</p>
-                <p className="text-2">06.00</p>
+                <p className="text-1">{news[3]?.title.rendered}</p>
+                <p className="text-2">
+                  {new Date(news[3]?.date).toLocaleDateString("id-ID", {
+                    day: "2-digit",
+                    month: "long",
+                    year: "numeric",
+                  })}
+                </p>
               </div>
             </div>
           </div>
