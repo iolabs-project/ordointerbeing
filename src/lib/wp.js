@@ -30,3 +30,12 @@ export async function getMedias(filter = {}) {
   if (!res.ok) throw new Error("Failed to fetch media");
   return res.json();
 }
+
+export async function getMostViewedPosts() {
+  // This is a custom endpoint created in the WordPress backend
+  // Fetch 10 most viewed posts
+  const res = await fetch('https://dev.ordointerbeing.id/wp-json/custom/v1/most-viewed', { cache: "no-store" });
+
+  if (!res.ok) throw new Error("Failed to fetch most viewed posts");
+  return res.json();
+}

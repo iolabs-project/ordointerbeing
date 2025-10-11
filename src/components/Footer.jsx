@@ -1,6 +1,17 @@
 import React from "react";
+import { getPosts, getMostViewedPosts } from "@/lib/wp";
 
-const Footer = () => {
+const Footer = async () => {
+  const latestPosts = await getPosts({
+    per_page: 3,
+    orderby: "date",
+  });
+
+  const mostViewedPosts = await getMostViewedPosts();
+
+  const formatNumber = (str) => {
+    return str.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
   return (
     <nav className="footer">
       <div className="wrapper">
@@ -26,9 +37,7 @@ const Footer = () => {
                 <i className="fa-regular fa-calendar-days"></i>
                 11 Jul s.d. 07 Oct 2025
               </div>
-              <a className="link-text">
-                Retret Umum: Nothing To Do Nowhere To Go
-              </a>
+              <a className="link-text">Retret Umum: Nothing To Do Nowhere To Go</a>
               <div className="group-text">
                 <i className="fa-solid fa-location-dot"></i>
                 Wyndham Tamansari Jivva Resort
@@ -66,15 +75,19 @@ const Footer = () => {
 
             <div className="right-group">
               <p className="title">Recent Post</p>
-              <a className="link-text">Let the Buddha Walk with You</a>
-              <a className="link-text">Meditasi Cinta Kasih</a>
-              <a className="link-text">Take Less Than Needed</a>
+              {latestPosts.map((post) => (
+                <a key={post.id} href={`/posts/${post.id}`} className="link-text">
+                  {post.title.rendered}
+                </a>
+              ))}
               <a className="link-text read-more">Read more...</a>
 
               <p className="title">Most Viewed Post</p>
-              <a className="link-text">Mendamaikan Hati dengan Latihan Mindfulness <span>(12,916)</span></a>
-              <a className="link-text">Memperbarui Sutra Hati <span>(11,918)</span></a>
-              <a className="link-text">Lahir Dengan Sendok Emas di Mulut <span>(10,196)</span></a>
+              {mostViewedPosts.slice(0, 3).map((post) => (
+                <a key={post.ID} href={`/posts/${post.ID}`} className="link-text">
+                  {post.post_title} <span>({formatNumber(post.post_views)})</span>
+                </a>
+              ))}
               <a className="link-text read-more">Read more...</a>
             </div>
           </div>
