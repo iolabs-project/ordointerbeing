@@ -27,9 +27,13 @@
         justify-content: space-between;
         gap: 100px;
 
-        img {
+        a {
           width: 15%;
           height: 50px;
+          img {
+            width: 100%;
+            height: 100%;
+          }
         }
       }
 
@@ -108,6 +112,7 @@
             font-size: 18px;
             font-weight: 400;
             align-items: center;
+            text-decoration: none;
 
             i {
               width: 20px;

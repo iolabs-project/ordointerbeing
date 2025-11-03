@@ -11,18 +11,28 @@ const Footer = async () => {
 
   const formatNumber = (str) => {
     return str.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-  }
+  };
   return (
     <nav className="footer">
       <div className="wrapper">
         <div className="top">
           <p className="text-1">Our Community</p>
           <div className="logo-group">
-            <img src="/assets/logo-footer-1.png" alt="Footer logo" />
-            <img src="/assets/logo-footer-2.png" alt="Footer logo" />
-            <img src="/assets/logo-footer-3.png" alt="Footer logo" />
-            <img src="/assets/logo-footer-4.png" alt="Footer logo" />
-            <img src="/assets/logo-footer-5.png" alt="Footer logo" />
+            <a href="https://plumvillage.org/" target="_blank">
+              <img src="/assets/logo-footer-1.png" alt="Footer logo" />
+            </a>
+            <a href="https://villagedespruniers.net/" target="_blank">
+              <img src="/assets/logo-footer-2.png" alt="Footer logo" />
+            </a>
+            <a href="https://www.thaiplumvillage.org/" target="_blank">
+              <img src="/assets/logo-footer-3.png" alt="Footer logo" />
+            </a>
+            <a href="https://langmai.org/" target="_blank">
+              <img src="/assets/logo-footer-4.png" alt="Footer logo" />
+            </a>
+            <a href="https://www.mindfulnessbell.org/" target="_blank">
+              <img src="/assets/logo-footer-5.png" alt="Footer logo" />
+            </a>
           </div>
 
           <div className="bottom-group">
@@ -51,26 +61,26 @@ const Footer = async () => {
 
             <div className="middle-group">
               <p className="title">Follow Us</p>
-              <div className="group-text">
+              <a href="https://www.instagram.com/plumvillageindonesia/"  target="_blank" className="group-text">
                 <i className="fa-brands fa-instagram"></i>
                 plumvillageindonesia
-              </div>
-              <div className="group-text">
+              </a>
+              <a href="https://www.youtube.com/channel/UClPM7O3Q1KQhc-0if2LQvNg/" target="_blank" className="group-text">
                 <i className="fa-brands fa-youtube"></i>
                 Plum Village Indonesia
-              </div>
-              <div className="group-text">
+              </a>
+              <a href="https://api.whatsapp.com/send?phone=628118129088" target="_blank" className="group-text">
                 <i className="fa-brands fa-whatsapp"></i>
                 PV Indo Admin
-              </div>
-              <div className="group-text">
+              </a>
+              <a href="https://api.whatsapp.com/send?phone=628116592010" target="_blank" className="group-text">
                 <i className="fa-brands fa-whatsapp"></i>
                 Webmaster
-              </div>
-              <div className="group-text">
+              </a>
+              <a href="https://web.facebook.com/100171481499566" target="_blank" className="group-text">
                 <i className="fa-brands fa-facebook"></i>
                 plumvillageindonesia
-              </div>
+              </a>
             </div>
 
             <div className="right-group">
