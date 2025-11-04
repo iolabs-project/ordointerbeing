@@ -100,9 +100,20 @@ export default async function Post({ params }) {
           <div className="facebook-box">
             <div className="facebook-title">
               <p>Facebook Post</p>
-              <a href="#">Lihat Semua</a>
+              <a href="https://www.facebook.com/plumvillageindo" target="_blank" rel="noopener noreferrer">lihat semua</a>
             </div>
-            <div className="facebook-content"></div>
+            <div className="facebook-content">
+              <iframe 
+                src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fplumvillageindo&tabs=timeline&width=340&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false&appId" 
+                width="340" 
+                height="500" 
+                style={{ border: 'none', overflow: 'hidden' }} 
+                scrolling="no" 
+                frameBorder="0" 
+                allowFullScreen={true} 
+                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+              ></iframe>
+            </div>
           </div>
         </div>
       </div>
