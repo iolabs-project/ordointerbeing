@@ -3,7 +3,6 @@
 
   .wrapper {
     display: flex;
-    flex-direction: column;
     justify-content: space-between;
     max-width: 1250px;
     margin: 0 auto;
@@ -14,7 +13,6 @@
     .left-side {
       display: flex;
       align-items: center;
-      justify-content: center;
       width: 100%;
       gap: 10px;
       cursor: pointer;
@@ -278,8 +276,11 @@
   @media screen and (max-width: 768px) {
     .wrapper {
       padding: 20px 15px;
+      flex-direction: column;
 
       .left-side {
+        justify-content: center;
+
         .text-1 {
           font-size: 18px;
         }
@@ -334,7 +335,7 @@
           padding: 10px;
           font-size: 16px;
           border-radius: 10px;
-          border: 1px solid #96644D;
+          border: 1px solid #96644d;
           width: 70%;
         }
       }
@@ -346,7 +347,7 @@
 
         .line {
           height: 2.5px;
-          background-color: #96644D;
+          background-color: #96644d;
         }
       }
 
