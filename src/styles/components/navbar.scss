@@ -3,15 +3,19 @@
 
   .wrapper {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     max-width: 1250px;
     margin: 0 auto;
     width: 100%;
     padding: 30px 0;
+    position: relative;
 
     .left-side {
       display: flex;
       align-items: center;
+      justify-content: center;
+      width: 100%;
       gap: 10px;
       cursor: pointer;
       text-decoration: none;
@@ -26,6 +30,141 @@
         font-weight: bold;
         color: black;
         font-family: $primary-font;
+      }
+    }
+
+    .mobile-wrapper {
+      display: none;
+    }
+
+    // Hamburger Menu Button
+    .hamburger-menu {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 30px;
+      height: 24px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      z-index: 1001;
+
+      .line {
+        width: 100%;
+        height: 3px;
+        background-color: black;
+        border-radius: 2px;
+        transition: all 0.3s ease;
+      }
+    }
+
+    // Mobile Menu
+    .mobile-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background-color: #fff8ef;
+      flex-direction: column;
+      padding: 20px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.3s ease, opacity 0.3s ease;
+
+      &.open {
+        max-height: 600px;
+        opacity: 1;
+      }
+
+      .mobile-search {
+        position: relative;
+        margin-bottom: 20px;
+
+        input {
+          width: 100%;
+          padding: 12px 10px 12px 40px;
+          font-size: 16px;
+          border: 1px solid black;
+          border-radius: 40px;
+          background: transparent;
+          outline: none;
+          font-family: $primary-font;
+          color: black;
+
+          &::placeholder {
+            color: black;
+            font-family: $primary-font;
+          }
+        }
+
+        svg {
+          position: absolute;
+          top: 50%;
+          left: 12px;
+          transform: translateY(-50%);
+        }
+      }
+
+      .mobile-tabs {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+
+        .mobile-tab {
+          position: relative;
+
+          a {
+            font-size: 20px;
+            font-weight: 400;
+            color: black;
+            font-family: $primary-font;
+            text-decoration: none;
+            display: block;
+            padding: 8px 0;
+
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+
+          &.dropdown {
+            .dropdown-menu {
+              position: static;
+              margin-top: 10px;
+              background-color: #fff;
+              border: 1px solid #ddd;
+              border-radius: 8px;
+              box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+              padding: 8px 0;
+
+              .dropdown-item {
+                display: block;
+                padding: 10px;
+                font-size: 13px;
+                font-weight: 600;
+                font-family: $secondary-font;
+                color: #333;
+                text-decoration: none;
+                transition: background-color 0.2s ease;
+                border-bottom: 1px solid #f0f0f0;
+
+                &:last-child {
+                  border-bottom: none;
+                }
+
+                &:hover {
+                  background-color: #f8f8f8;
+                  color: #000;
+                  text-decoration: none;
+                }
+              }
+            }
+          }
+        }
       }
     }
 
@@ -47,6 +186,37 @@
           &:hover {
             text-decoration: underline;
             transform: scale(1.05);
+          }
+        }
+
+        &.search {
+          position: relative;
+
+          input {
+            padding: 4px 10px;
+            font-size: 16px;
+            border: 1px solid black;
+            border-radius: 40px;
+            background: transparent;
+            outline: none;
+            transition: border-color 0.2s ease;
+            font-family: $primary-font;
+            color: black;
+            padding-left: 40px;
+            font-size: 20px;
+            width: 150px;
+
+            &::placeholder {
+              color: black;
+              font-family: $primary-font;
+            }
+          }
+
+          svg {
+            position: absolute;
+            top: 50%;
+            left: 10px;
+            transform: translateY(-50%);
           }
         }
 
@@ -97,6 +267,118 @@
                 transform: none;
                 text-decoration: none;
               }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // Mobile Styles
+  @media screen and (max-width: 768px) {
+    .wrapper {
+      padding: 20px 15px;
+
+      .left-side {
+        .text-1 {
+          font-size: 18px;
+        }
+
+        img {
+          width: 40px;
+          height: 40px;
+        }
+      }
+
+      .hamburger-menu {
+        display: flex;
+      }
+
+      .menu-tabs {
+        display: none;
+      }
+
+      .mobile-menu {
+        display: flex;
+      }
+    }
+  }
+
+  // Tablet and below - original mobile breakpoint
+  @media screen and (max-width: 430px) {
+    .wrapper {
+      padding: 40px 20px;
+      gap: 20px;
+
+      .left-side {
+        gap: 15px;
+
+        img {
+          width: 50px;
+          height: 50px;
+        }
+
+        .text-1 {
+          font-size: 30px;
+        }
+      }
+
+      .mobile-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        width: 100%;
+
+        input {
+          padding: 10px;
+          font-size: 16px;
+          border-radius: 10px;
+          border: 1px solid #96644D;
+          width: 80%;
+        }
+      }
+
+      .hamburger-menu {
+        display: flex;
+        width: 25px;
+        height: 20px;
+
+        .line {
+          height: 2.5px;
+          background-color: #96644D;
+        }
+      }
+
+      .menu-tabs {
+        display: none;
+      }
+
+      .mobile-menu {
+        display: flex;
+        padding: 15px;
+
+        .mobile-search {
+          margin-bottom: 15px;
+
+          input {
+            padding: 10px 10px 10px 35px;
+            font-size: 14px;
+          }
+
+          svg {
+            width: 16px;
+            height: 16px;
+            left: 10px;
+          }
+        }
+
+        .mobile-tabs {
+          gap: 12px;
+
+          .mobile-tab {
+            a {
+              font-size: 18px;
+              padding: 6px 0;
             }
           }
         }
