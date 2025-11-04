@@ -307,25 +307,26 @@
   // Tablet and below - original mobile breakpoint
   @media screen and (max-width: 430px) {
     .wrapper {
-      padding: 40px 20px;
+      padding: 40px 0px;
       gap: 20px;
 
       .left-side {
-        gap: 15px;
+        gap: 10px;
 
         img {
-          width: 50px;
-          height: 50px;
+          width: 40px;
+          height: 40px;
         }
 
         .text-1 {
-          font-size: 30px;
+          font-size: 25px;
         }
       }
 
       .mobile-wrapper {
         display: flex;
         align-items: center;
+        justify-content: center;
         gap: 20px;
         width: 100%;
 
@@ -334,7 +335,7 @@
           font-size: 16px;
           border-radius: 10px;
           border: 1px solid #96644D;
-          width: 80%;
+          width: 70%;
         }
       }
 

@@ -177,3 +177,49 @@
     }
   }
 }
+
+@media screen and (max-width: 430px) {
+  .footer {
+    padding: 30px;
+    .wrapper {
+      padding: 0;
+
+      .top {
+        gap: 30px;
+
+        .text-1 {
+          font-size: 20px;
+        }
+
+        .logo-group {
+          flex-direction: column;
+          align-items: center;
+          gap: 20px;
+
+          a {
+            width: 40%;
+            height: auto;
+          }
+        }
+
+        .bottom-group {
+          flex-direction: column;
+          gap: 30px;
+
+          .left-group,
+          .middle-group,
+          .right-group {
+            width: 100%;
+          }
+        }
+
+        .bottom-group2 {
+          flex-direction: column;
+          gap: 20px;
+          align-items: center;
+          text-align: center;
+        }
+      }
+    }
+  }
+}
