@@ -29,10 +29,12 @@ const SectionTwo = async () => {
 
         <div className="bottom">
           <div className="left">
-            <img src={news[0]?.jetpack_featured_media_url} alt="" />
+            <a  href={`/posts/${news[0]?.id}`}>
+              <img src={news[0]?.jetpack_featured_media_url} alt="" />
+            </a>
           </div>
           <div className="right">
-            <div className="card-box">
+            <a href={`/posts/${news[1]?.id}`} className="card-box">
               <img src={news[1]?.jetpack_featured_media_url} alt="" />
               <div className="group-text">
                 <p className="text-1">{news[1]?.title.rendered}</p>
@@ -44,8 +46,8 @@ const SectionTwo = async () => {
                   })}
                 </p>
               </div>
-            </div>
-            <div className="card-box">
+            </a>
+            <a href={`/posts/${news[2]?.id}`} className="card-box">
               <img src={news[2]?.jetpack_featured_media_url} alt="" />
               <div className="group-text">
                 <p className="text-1">{news[2]?.title.rendered}</p>
@@ -57,8 +59,8 @@ const SectionTwo = async () => {
                   })}
                 </p>
               </div>
-            </div>
-            <div className="card-box">
+            </a>
+            <a href={`/posts/${news[3]?.id}`} className="card-box">
               <img src={news[3]?.jetpack_featured_media_url} alt="" />
               <div className="group-text">
                 <p className="text-1">{news[3]?.title.rendered}</p>
@@ -70,7 +72,7 @@ const SectionTwo = async () => {
                   })}
                 </p>
               </div>
-            </div>
+            </a>
           </div>
         </div>
       </div>
@@ -91,10 +93,12 @@ const SectionTwo = async () => {
 
         <div className="bottom">
           <div className="left">
-            <img src={news[0]?.jetpack_featured_media_url} alt="" />
+            <a href={`/posts/${news[0]?.id}`}>
+              <img src={news[0]?.jetpack_featured_media_url} alt="" />
+            </a>
           </div>
           <div className="right">
-            <div className="card-box">
+            <a href={`/posts/${news[1]?.id}`} className="card-box">
               <img src={news[1]?.jetpack_featured_media_url} alt="" />
               <div className="group-text">
                 <p className="text-1">{news[1]?.title.rendered}</p>
@@ -106,8 +110,8 @@ const SectionTwo = async () => {
                   })}
                 </p>
               </div>
-            </div>
-            <div className="card-box">
+            </a>
+            <a href={`/posts/${news[2]?.id}`} className="card-box">
               <img src={news[2]?.jetpack_featured_media_url} alt="" />
               <div className="group-text">
                 <p className="text-1">{news[2]?.title.rendered}</p>
@@ -119,8 +123,8 @@ const SectionTwo = async () => {
                   })}
                 </p>
               </div>
-            </div>
-            <div className="card-box">
+            </a>
+            <a href={`/posts/${news[3]?.id}`} className="card-box">
               <img src={news[3]?.jetpack_featured_media_url} alt="" />
               <div className="group-text">
                 <p className="text-1">{news[3]?.title.rendered}</p>
@@ -132,11 +136,13 @@ const SectionTwo = async () => {
                   })}
                 </p>
               </div>
-            </div>
+            </a>
           </div>
         </div>
 
-        <a href="#" className="lihat-btn">Lihat Semua</a>
+        <a href="#" className="lihat-btn">
+          Lihat Semua
+        </a>
       </div>
     </div>
   );

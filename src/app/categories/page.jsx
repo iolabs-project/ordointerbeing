@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { getPost, getPosts, getMedias } from "@/lib/wp";
 
-export default  function Category({ params }) {
+export default function Category({ params }) {
   const { id } =  params;
 
   const categoryIDs = {

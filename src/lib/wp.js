@@ -39,3 +39,8 @@ export async function getMostViewedPosts() {
   if (!res.ok) throw new Error("Failed to fetch most viewed posts");
   return res.json();
 }
+
+export function randomizeArray(arr, count) {
+  const shuffled = arr.sort(() => 0.5 - Math.random());
+  return shuffled.slice(0, count);
+}
