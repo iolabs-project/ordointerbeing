@@ -15,7 +15,14 @@ const SectionFive = () => {
 
         <div className="bottom">
           <a className="group-box">
-            <img className="video" src="assets/home-section5-1.webp" alt="" />
+            <iframe 
+              className="video" 
+              src="https://www.youtube.com/embed/3kY39fuq2qY" 
+              title="You Are enough"
+              frameBorder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowFullScreen
+            ></iframe>
             <p className="text-1">You Are enough</p>
             <div className="group-text">
               <p className="text-2">B. Nyanabhandra Phap Tu</p>
@@ -23,7 +30,14 @@ const SectionFive = () => {
             </div>
           </a>
           <a className="group-box">
-            <img className="video" src="assets/home-section5-2.webp" alt="" />
+            <iframe 
+              className="video" 
+              src="https://www.youtube.com/embed/85GTJ7vv4Ps" 
+              title="Day of Mindfulness"
+              frameBorder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowFullScreen
+            ></iframe>
             <p className="text-1">Day of Mindfulness</p>
             <div className="group-text">
               <p className="text-2">B. Nyanabhandra Phap Tu</p>
@@ -31,7 +45,14 @@ const SectionFive = () => {
             </div>
           </a>
           <a className="group-box">
-            <img className="video" src="assets/home-section5-3.webp" alt="" />
+            <iframe 
+              className="video" 
+              src="https://www.youtube.com/embed/ZAdHjJGEPx0" 
+              title="Night of Mindfulness"
+              frameBorder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowFullScreen
+            ></iframe>
             <p className="text-1">Night of Mindfulness</p>
             <div className="group-text">
               <p className="text-2">B. Nyanabhandra Phap Tu</p>
@@ -53,7 +74,14 @@ const SectionFive = () => {
 
         <div className="bottom">
           <a className="group-box">
-            <img className="video" src="assets/home-section5-1.webp" alt="" />
+            <iframe 
+              className="video" 
+              src="https://www.youtube.com/embed/3kY39fuq2qY" 
+              title="You Are enough"
+              frameBorder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowFullScreen
+            ></iframe>
             <p className="text-1">You Are enough</p>
             <div className="group-text">
               <p className="text-2">B. Nyanabhandra Phap Tu</p>
@@ -61,7 +89,14 @@ const SectionFive = () => {
             </div>
           </a>
           <a className="group-box">
-            <img className="video" src="assets/home-section5-2.webp" alt="" />
+            <iframe 
+              className="video" 
+              src="https://www.youtube.com/embed/85GTJ7vv4Ps" 
+              title="Day of Mindfulness"
+              frameBorder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowFullScreen
+            ></iframe>
             <p className="text-1">Day of Mindfulness</p>
             <div className="group-text">
               <p className="text-2">B. Nyanabhandra Phap Tu</p>
@@ -69,7 +104,14 @@ const SectionFive = () => {
             </div>
           </a>
           <a className="group-box">
-            <img className="video" src="assets/home-section5-3.webp" alt="" />
+            <iframe 
+              className="video" 
+              src="https://www.youtube.com/embed/ZAdHjJGEPx0" 
+              title="Night of Mindfulness"
+              frameBorder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowFullScreen
+            ></iframe>
             <p className="text-1">Night of Mindfulness</p>
             <div className="group-text">
               <p className="text-2">B. Nyanabhandra Phap Tu</p>
