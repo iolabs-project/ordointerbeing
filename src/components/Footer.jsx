@@ -33,6 +33,27 @@ const Footer = async () => {
             <a href="https://www.mindfulnessbell.org/" target="_blank">
               <img src="/assets/logo-footer-5.png" alt="Footer logo" />
             </a>
+            <a href="https://eiab.eu/" target="_blank">
+              <img src="/assets/logo-footer-6.png" alt="Footer logo" />
+            </a>
+            <a href="https://www.thaiplumvillage.org/" target="_blank">
+              <img src="/assets/logo-footer-7.png" alt="Footer logo" />
+            </a>
+            <a href="https://www.pvfhk.org/news/2017/encounter-with-plum-village" target="_blank">
+              <img src="/assets/logo-footer-8.png" alt="Footer logo" />
+            </a>
+            <a href="https://deerparkmonastery.org/" target="_blank">
+              <img src="/assets/logo-footer-9.webp" alt="Footer logo" />
+            </a>
+            <a href="https://www.bluecliffmonastery.org/" target="_blank">
+              <img src="/assets/logo-footer-10.png" alt="Footer logo" />
+            </a>
+            <a href="https://magnoliagrovemonastery.org/" target="_blank">
+              <img src="/assets/logo-footer-11.png" alt="Footer logo" />
+            </a>
+            <a href="https://www.parallax.org/" target="_blank">
+              <img src="/assets/logo-footer-12.png" alt="Footer logo" />
+            </a>
           </div>
 
           <div className="bottom-group">

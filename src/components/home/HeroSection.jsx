@@ -14,9 +14,10 @@ const HeroSection = async () => {
   return (
     <>
       <div className="hero-img">
-        <img src="/assets/hero-home.webp" alt="Hero" />
-      </div>
+        {/* <img src="/assets/hero-home.webp" alt="Hero" /> */}
       <HeroCarousel posts={posts} />
+      </div>
+      {/* <HeroCarousel posts={posts} /> */}
     </>
   );
 };

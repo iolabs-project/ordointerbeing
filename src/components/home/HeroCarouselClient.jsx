@@ -17,6 +17,7 @@ const HeroCarouselClient = ({ posts }) => {
       {posts.map((post) => (
         <a key={post.id} href={`/posts/${post.id}`} className="hero-img">
           <img src={post.jetpack_featured_media_url} alt={post.title.rendered} />
+          <p>{post.title.rendered}</p>
         </a>
       ))}
     </Slider>
