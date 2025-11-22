@@ -1,9 +1,9 @@
 import React from "react";
-import { getPosts, randomizeArray } from "@/lib/wp";
 import HeroCarousel from "./HeroCarouselClient";
+import { randomizeArray } from "@/lib/helper";
 
 const HeroSection = async () => {
-  let posts = await getPosts({
+  const posts = await apiFetch("wp/posts", {
     per_page: 20,
     categories: "155,124,165",
     orderby: "date",
@@ -14,10 +14,8 @@ const HeroSection = async () => {
   return (
     <>
       <div className="hero-img">
-        {/* <img src="/assets/hero-home.webp" alt="Hero" /> */}
-      <HeroCarousel posts={posts} />
+        <HeroCarousel posts={posts} />
       </div>
-      {/* <HeroCarousel posts={posts} /> */}
     </>
   );
 };

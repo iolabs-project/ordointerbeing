@@ -1,8 +1,8 @@
 import React from "react";
-import { getPosts } from "@/lib/wp";
+import { apiFetch } from "@/lib/helper";
 
 const SectionTwo = async () => {
-  const news = await getPosts({
+  const news = await apiFetch("wp/posts", {
     per_page: 4,
     categories: 165,
     orderby: "date",
@@ -29,7 +29,7 @@ const SectionTwo = async () => {
 
         <div className="bottom">
           <div className="left">
-            <a  href={`/posts/${news[0]?.id}`}>
+            <a href={`/posts/${news[0]?.id}`}>
               <img src={news[0]?.jetpack_featured_media_url} alt="" />
             </a>
           </div>

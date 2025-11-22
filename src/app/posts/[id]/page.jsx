@@ -1,12 +1,12 @@
-import { getPost, getPosts, getMedias } from "@/lib/wp";
 import InfoCard from "@/components/posts/InfoCard";
 import MusicCard from "@/components/posts/MusicCard";
 import PostContent from "@/components/posts/PostContent";
+import { apiFetch } from "@/lib/helper";
 
 export default async function Post({ params }) {
   const { id } = await params;
-  const post = await getPost(id);
-  const infos = await getPosts(
+  const post = await apiFetch(`wp/posts/${id}`);
+  const infos = await apiFetch('wp/posts', 
     { 
       per_page: 2,
       _fields: "id,title,content,date,categories,_embedded, _links",
@@ -14,8 +14,7 @@ export default async function Post({ params }) {
       _embed: "wp:term",
     }
   );
-
-  const musics = await getPosts(
+  const musics = await apiFetch('wp/posts', 
     { 
       per_page: 2,
       categories: 215,
@@ -24,7 +23,7 @@ export default async function Post({ params }) {
     }
   );
 
-  //* Post Section Processing
+  //* Post Section Processing 
   const heroURL = post.jetpack_featured_media_url || "";
   let content = post.content.rendered;
 

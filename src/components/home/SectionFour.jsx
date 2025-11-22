@@ -1,22 +1,18 @@
 import React from "react";
-import { getPosts } from "@/lib/wp";
 
 const SectionFour = async () => {
-  const article = await getPosts({
-      per_page: 7,
-      categories: 124,
-      orderby: "date",
-      _embed: true,
-    });
+  const article = await apiFetch("wp/posts", {
+    per_page: 7,
+    categories: 124,
+    orderby: "date",
+    _embed: true,
+  });
   return (
     <div className="section-four">
       <div className="wrapper">
         <div className="top">
           <p className="title">artikel Terkini</p>
-          <p className="subtitle">
-            Kumpulan kisah inspiratif dan pengalaman nyata dari anggota
-            komunitas dalam menjalani praktik spiritual.
-          </p>
+          <p className="subtitle">Kumpulan kisah inspiratif dan pengalaman nyata dari anggota komunitas dalam menjalani praktik spiritual.</p>
         </div>
 
         <div className="bottom">
@@ -50,7 +46,7 @@ const SectionFour = async () => {
             <a href={`/posts/${article[3]?.id}`} className="card-box">
               <img src={article[3]?.jetpack_featured_media_url} alt="" />
               <div className="group-text">
-                <p className="text-1">{article[3]?.title.rendered}</p> 
+                <p className="text-1">{article[3]?.title.rendered}</p>
 
                 <p className="text-2">
                   {new Date(article[3]?.date).toLocaleDateString("id-ID", {
@@ -65,7 +61,7 @@ const SectionFour = async () => {
           <div className="middle">
             <a href={`/posts/${article[0]?.id}`}>
               <img src={article[0]?.jetpack_featured_media_url} alt="" />
-            <p className="text-1">{article[0]?.title.rendered}</p>
+              <p className="text-1">{article[0]?.title.rendered}</p>
             </a>
           </div>
           <div className="right">
@@ -111,16 +107,15 @@ const SectionFour = async () => {
           </div>
         </div>
 
-        <a href="#" className="button">Lihat semua</a>
+        <a href="#" className="button">
+          Lihat semua
+        </a>
       </div>
 
       <div className="wrapper-mobile">
         <div className="top">
           <p className="title">artikel Kami</p>
-          <p className="subtitle">
-            Kumpulan kisah inspiratif dan pengalaman nyata dari anggota
-            komunitas dalam menjalani praktik spiritual.
-          </p>
+          <p className="subtitle">Kumpulan kisah inspiratif dan pengalaman nyata dari anggota komunitas dalam menjalani praktik spiritual.</p>
         </div>
 
         <div className="bottom">
@@ -171,7 +166,9 @@ const SectionFour = async () => {
           </div>
         </div>
 
-        <a href="#" className="button">Lihat semua</a>
+        <a href="#" className="button">
+          Lihat semua
+        </a>
       </div>
     </div>
   );

@@ -1,13 +1,13 @@
 import React from "react";
-import { getPosts, getMostViewedPosts } from "@/lib/wp";
+import { apiFetch } from "@/lib/helper";
 
 const Footer = async () => {
-  const latestPosts = await getPosts({
+  const latestPosts = await apiFetch("wp/posts", {
     per_page: 3,
     orderby: "date",
   });
 
-  const mostViewedPosts = await getMostViewedPosts();
+  const mostViewedPosts = await apiFetch("wp/posts/most-viewed");
 
   const formatNumber = (str) => {
     return str.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -82,7 +82,7 @@ const Footer = async () => {
 
             <div className="middle-group">
               <p className="title">Follow Us</p>
-              <a href="https://www.instagram.com/plumvillageindonesia/"  target="_blank" className="group-text">
+              <a href="https://www.instagram.com/plumvillageindonesia/" target="_blank" className="group-text">
                 <i className="fa-brands fa-instagram"></i>
                 plumvillageindonesia
               </a>

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { getPostNames } from "@/lib/wp";
+import { apiFetch } from "@/lib/helper";
 
 const Navbar = () => {
   const [tentang, setTentang] = useState([]);
@@ -13,8 +13,10 @@ const Navbar = () => {
       const filter = {
         categories: 155,
         exclude: 6348,
+        $_fields: "id,title,categories",
+        per_page: 100,
       };
-      const names = await getPostNames(filter);
+      const names = await apiFetch("wp/posts", filter);
       setTentang(names);
     };
 
