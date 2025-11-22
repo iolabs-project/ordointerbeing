@@ -67,7 +67,7 @@ const SectionFive = () => {
           <p className="title">dharma talks</p>
           <p className="subtitle">
             Temukan <b>inspirasi dan kedamaian</b> dalam Dhamma Talks—koleksi
-            video diskusi mendalam<br />tentang kebijaksanaan,
+            video diskusi mendalam tentang kebijaksanaan,
             mindfulness, dan perjalanan spiritual
           </p>
         </div>
