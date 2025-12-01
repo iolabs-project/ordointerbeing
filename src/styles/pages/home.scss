@@ -534,6 +534,116 @@
       }
     }
   }
+
+  .section-six {
+    background-color: #fff8ef;
+    padding: 120px 0;
+
+    .wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 60px;
+    }
+
+    .wrapper-mobile {
+      display: none;
+    }
+
+    .top {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .title {
+        color: #96644d;
+        font-family: $primary-font;
+        font-size: 50px;
+        font-weight: bold;
+        text-transform: uppercase;
+        text-align: center;
+        font-style: italic;
+      }
+    }
+
+    .bottom {
+      display: flex;
+      width: 100%;
+
+      .social-section {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 30px;
+
+        .instagram-embed {
+          width: 100%;
+
+          iframe {
+            width: 100%;
+            border-radius: 10px;
+          }
+        }
+
+        .youtube-embed {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+          padding: 40px;
+          background: white;
+          box-sizing: border-box; // Add this line
+
+          .youtube-header {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+
+            .youtube-title {
+              color: black;
+              font-family: $secondary-font;
+              font-size: 28px;
+              font-weight: bold;
+            }
+
+            .youtube-subtitle {
+              color: black;
+              font-family: $secondary-font;
+              font-size: 15px;
+            }
+
+            img {
+              width: 100px;
+            }
+          }
+
+          .vid-blocks {
+            width: 100%;
+            display: flex;
+            gap: 20px;
+          }
+
+          .group-box {
+            width: 33.33%;
+
+            iframe {
+              width: 100%;
+              height: 225px;
+              border-radius: 10px;
+            }
+
+            .text-1 {
+              color: black;
+              font-family: $secondary-font;
+              font-size: 16px;
+              font-weight: bold;
+              margin-top: 5px;
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
 @media screen and (max-width: 430px) {
@@ -1114,6 +1224,122 @@
               font-size: 15px;
               font-family: $secondary-font;
               text-align: center;
+            }
+          }
+        }
+      }
+    }
+
+    .section-six {
+      background-color: #fff8ef;
+      padding: 50px 0;
+
+      .wrapper {
+        display: none;
+      }
+
+      .wrapper-mobile {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0px 30px;
+        gap: 40px;
+      }
+
+      .top {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .title {
+          color: #96644d;
+          font-family: $primary-font;
+          font-size: 28px;
+          font-weight: bold;
+          text-transform: uppercase;
+          text-align: center;
+          font-style: italic;
+        }
+      }
+
+      .bottom {
+        display: flex;
+        width: 100%;
+
+        .social-section {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          gap: 30px;
+
+          .instagram-embed {
+            width: 100%;
+
+            iframe {
+              width: 100%;
+              border-radius: 10px;
+              height: 370px;
+            }
+          }
+
+          .youtube-embed {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding: 20px;
+            background: white;
+            box-sizing: border-box;
+            border-radius: 10px;
+
+            .youtube-header {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              gap: 15px;
+              text-align: center;
+
+              .youtube-title {
+                color: black;
+                font-family: $secondary-font;
+                font-size: 20px;
+                font-weight: bold;
+              }
+
+              .youtube-subtitle {
+                color: black;
+                font-family: $secondary-font;
+                font-size: 13px;
+              }
+
+              img {
+                width: 80px;
+              }
+            }
+
+            .vid-blocks {
+              width: 100%;
+              display: flex;
+              flex-direction: column;
+              gap: 20px;
+            }
+
+            .group-box {
+              width: 100%;
+
+              iframe {
+                width: 100%;
+                height: 200px;
+                border-radius: 10px;
+              }
+
+              .text-1 {
+                color: black;
+                font-family: $secondary-font;
+                font-size: 14px;
+                font-weight: bold;
+                margin-top: 10px;
+              }
             }
           }
         }

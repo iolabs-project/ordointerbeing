@@ -3,10 +3,10 @@ import { NextResponse } from 'next/server';
 export async function GET() {
   try {
     // Try multiple methods to get the channel feed
-    const channelHandle = '@plumvillageonline';
+    const channelHandle = '@PlumVillageIndonesia';
     
-    // Method 1: Try using the channel handle directly
-    let rssUrl = `https://www.youtube.com/feeds/videos.xml?channel_id=UCcv869polar0QAX2pGRfL-w`;
+    // Method 1: Try using the channel ID
+    let rssUrl = `https://www.youtube.com/feeds/videos.xml?channel_id=UClPM7O3Q1KQhc-0if2LQvNg`;
     console.log('Attempting Method 1 - Channel ID:', rssUrl);
     
     let response = await fetch(rssUrl, { 
@@ -19,7 +19,7 @@ export async function GET() {
     // Method 2: If that fails, try with user parameter (older channels)
     if (!response.ok) {
       console.log('Method 1 failed, trying Method 2 - Username...');
-      rssUrl = `https://www.youtube.com/feeds/videos.xml?user=plumvillageonline`;
+      rssUrl = `https://www.youtube.com/feeds/videos.xml?user=PlumVillageIndonesia`;
       response = await fetch(rssUrl, { 
         cache: 'no-store',
         headers: {
@@ -28,7 +28,7 @@ export async function GET() {
       });
     }
 
-    // Method 3: Try the correct channel ID for Plum Village
+    // Method 3: Try alternative channel ID
     if (!response.ok) {
       console.log('Method 2 failed, trying Method 3 - Alternative Channel ID...');
       rssUrl = `https://www.youtube.com/feeds/videos.xml?channel_id=UClPM7O3Q1KQhc-0if2LQvNg`;
@@ -69,7 +69,7 @@ export async function GET() {
       const title = entryText.match(titleRegex)?.[1] || 'Untitled';
       const videoId = entryText.match(videoIdRegex)?.[1] || '';
       const published = entryText.match(publishedRegex)?.[1] || '';
-      const author = entryText.match(authorRegex)?.[1] || 'Plum Village';
+      const author = entryText.match(authorRegex)?.[1] || 'Plum Village Indonesia';
       
       return {
         id: videoId,
