@@ -125,7 +125,7 @@ const SectionSix = () => {
                 allowTransparency="true"
               ></iframe>
             </div>
-            <div className="youtube-embed">
+            {/* <div className="youtube-embed">
               <div className="youtube-header">
                 <img
                   src="/assets/yt-logo.png"
@@ -140,7 +140,7 @@ const SectionSix = () => {
                 </div>
               </div>
               <div className="vid-blocks">{renderVideos()}</div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
@@ -162,7 +162,7 @@ const SectionSix = () => {
                 allowTransparency="true"
               ></iframe>
             </div>
-            <div className="youtube-embed">
+            {/* <div className="youtube-embed">
               <div className="youtube-header">
                 <img
                   src="/assets/yt-logo.png"
@@ -177,7 +177,7 @@ const SectionSix = () => {
                 </div>
               </div>
               <div className="vid-blocks">{renderVideos()}</div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
