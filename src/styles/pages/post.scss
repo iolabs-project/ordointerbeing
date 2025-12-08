@@ -6,7 +6,7 @@
 
   p {
     color: #050505;
-    font-family: $secondary-font;
+    font-family: $third-font;
     font-size: 1rem;
     margin-bottom: 30px;
     text-align: justify;
@@ -37,7 +37,7 @@
     .left {
       width: 75%;
 
-      font-family: $secondary-font;
+      font-family: $third-font;
 
       .blocks-1 {
         background: #96644d;
@@ -219,7 +219,7 @@
           margin-bottom: 20px;
           // padding: 20px;
           p {
-            font-family: $secondary-font;
+            font-family: $third-font;
             font-size: 20px;
             font-weight: bold;
             color: black;
@@ -227,7 +227,7 @@
           }
 
           a {
-            font-family: $secondary-font;
+            font-family: $third-font;
             font-size: 15px;
             color: #96644d;
             text-decoration: none;
@@ -256,7 +256,7 @@
           }
 
           .info-title {
-            font-family: $secondary-font;
+            font-family: $third-font;
             font-size: 21px;
             font-weight: bold;
             color: #050505;
@@ -270,14 +270,14 @@
             gap: 15px;
 
             p {
-              font-family: $secondary-font;
+              font-family: $third-font;
               font-size: 1rem;
               color: #7d7d7d;
               margin: 0;
             }
 
             .info-date {
-              font-family: $secondary-font;
+              font-family: $third-font;
               font-size: 15px;
               color: #7d7d7d;
               margin: 0;
@@ -285,7 +285,7 @@
 
             .info-category {
               text-transform: capitalize;
-              font-family: $secondary-font;
+              font-family: $third-font;
               font-size: 15px;
               padding: 5px 17px;
               border-radius: 20px;
@@ -318,7 +318,7 @@
           margin-bottom: 20px;
           // padding: 20px;
           p {
-            font-family: $secondary-font;
+            font-family: $third-font;
             font-size: 20px;
             font-weight: bold;
             color: black;
@@ -326,7 +326,7 @@
           }
 
           a {
-            font-family: $secondary-font;
+            font-family: $third-font;
             font-size: 15px;
             color: #96644d;
             text-decoration: none;
@@ -352,7 +352,7 @@
             }
 
             .music-title {
-              font-family: $secondary-font;
+              font-family: $third-font;
               font-size: 1.3rem;
               font-weight: bold;
               color: #050505;
@@ -361,7 +361,7 @@
             }
 
             .music-description {
-              font-family: $secondary-font;
+              font-family: $third-font;
               font-size: 0.8rem;
               color: #747474;
               margin: 0 0 5px 0;
@@ -370,7 +370,7 @@
             .music-link {
               //change into button
 
-              font-family: $secondary-font;
+              font-family: $third-font;
               display: inline-block;
               padding: 8px 16px;
               background-color: #96644d;
@@ -394,7 +394,7 @@
           margin-bottom: 20px;
           // padding: 20px;
           p {
-            font-family: $secondary-font;
+            font-family: $third-font;
             font-size: 20px;
             font-weight: bold;
             color: black;
@@ -402,7 +402,7 @@
           }
 
           a {
-            font-family: $secondary-font;
+            font-family: $third-font;
             font-size: 15px;
             color: #96644d;
             text-decoration: none;
@@ -432,7 +432,7 @@
 
     p {
       color: #7d7d7d;
-      font-family: $secondary-font;
+      font-family: $third-font;
       font-size: 16px;
       display: flex;
       align-items: center;
