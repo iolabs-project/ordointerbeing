@@ -82,7 +82,7 @@ export default function Blog() {
     124: {
       name: "Artikel",
       color: "#717171",
-      image: "/assets/hero-home.webp",
+      image: "/assets/kaligrafi.webp",
       subtitle:
         "Kumpulan artikel umum seputar mindfulness, kehidupan sadar, dan ajaran Buddha. Berbagai tulisan inspiratif untuk memperkaya pemahaman dan praktik Anda.",
       style: "normal",
@@ -90,7 +90,7 @@ export default function Blog() {
     165: {
       name: "Berita",
       color: "#717171",
-      image: "/assets/hero-home.webp",
+      image: "/assets/kaligrafi.webp",
       subtitle:
         "Berita terkini dari komunitas Plum Village Indonesia dan internasional. Ikuti perkembangan kegiatan, acara, dan informasi penting lainnya.",
       style: "normal",
@@ -98,7 +98,7 @@ export default function Blog() {
     969: {
       name: "Chanting",
       color: "#717171",
-      image: "/assets/hero-home.webp",
+      image: "/assets/kaligrafi.webp",
       subtitle:
         "Koleksi chanting dan nyanyian suci dari tradisi Plum Village. Praktikkan chanting untuk menenangkan pikiran dan memperdalam konsentrasi.",
       style: "normal",
@@ -106,7 +106,7 @@ export default function Blog() {
     4: {
       name: "Media",
       color: "#717171",
-      image: "/assets/hero-home.webp",
+      image: "/assets/kaligrafi.webp",
       subtitle:
         "Koleksi media audio dan video dari kegiatan Plum Village. Nikmati rekaman wejangan, meditasi terpandu, dan dokumentasi acara.",
       style: "normal",
@@ -114,7 +114,7 @@ export default function Blog() {
     155: {
       name: "Tentang",
       color: "#717171",
-      image: "/assets/hero-home.webp",
+      image: "/assets/kaligrafi.webp",
       subtitle:
         "Informasi tentang Plum Village, sejarah, dan tradisi praktik mindfulness yang dikembangkan oleh Thich Nhat Hanh.",
       style: "normal",
@@ -122,7 +122,7 @@ export default function Blog() {
     907: {
       name: "Workshop",
       color: "#717171",
-      image: "/assets/hero-home.webp",
+      image: "/assets/kaligrafi.webp",
       subtitle:
         "Materi dan panduan workshop praktik Plum Village. Pelajari berbagai teknik mindfulness melalui sesi workshop terstruktur.",
       style: "normal",
@@ -130,7 +130,7 @@ export default function Blog() {
     187: {
       name: "Proyek",
       color: "#717171",
-      image: "/assets/hero-home.webp",
+      image: "/assets/kaligrafi.webp",
       subtitle:
         "Proyek-proyek dari komunitas Plum Village. Ikuti perkembangan berbagai inisiatif dan kegiatan yang sedang berjalan.",
       style: "normal",
