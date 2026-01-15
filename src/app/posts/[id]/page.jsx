@@ -6,7 +6,7 @@ import { apiFetch } from "@/lib/helper";
 export default async function Post({ params }) {
   const { id } = await params;
   const post = await apiFetch(`wp/posts/${id}`);
-  const infos = await apiFetch('wp/posts', 
+  const infosData = await apiFetch('wp/posts', 
     { 
       per_page: 2,
       _fields: "id,title,content,date,categories,_embedded, _links",
@@ -14,7 +14,9 @@ export default async function Post({ params }) {
       _embed: "wp:term",
     }
   );
-  const musics = await apiFetch('wp/posts', 
+  const infos = infosData?.posts || infosData || [];
+  
+  const musicsData = await apiFetch('wp/posts', 
     { 
       per_page: 2,
       categories: 215,
@@ -22,6 +24,7 @@ export default async function Post({ params }) {
       _embed: true,
     }
   );
+  const musics = musicsData?.posts || musicsData || [];
 
   //* Post Section Processing 
   const heroURL = post.jetpack_featured_media_url || "";

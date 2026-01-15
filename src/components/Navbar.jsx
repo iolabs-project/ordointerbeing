@@ -69,13 +69,10 @@ const Navbar = () => {
             )}
           </div>
           <div className="tabs">
-            <a href="#">Praktik</a>
+            <a href="/blog">Blog</a>
           </div>
           <div className="tabs">
             <a href="#">Jadwal</a>
-          </div>
-          <div className="tabs">
-            <a href="#">Blok</a>
           </div>
           <div className="tabs">
             <a href="#">Kontak</a>
@@ -124,13 +121,10 @@ const Navbar = () => {
               )}
             </div>
             <div className="mobile-tab">
-              <a href="#">Praktik</a>
+              <a href="/blog">Blog</a>
             </div>
             <div className="mobile-tab">
               <a href="#">Jadwal</a>
-            </div>
-            <div className="mobile-tab">
-              <a href="#">Blok</a>
             </div>
             <div className="mobile-tab">
               <a href="#">Kontak</a>

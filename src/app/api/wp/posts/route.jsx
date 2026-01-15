@@ -9,7 +9,16 @@ export async function GET(req) {
     if (!res.ok) return Response.json({ error: "Failed to fetch posts" }, { status: 500 });
 
     const data = await res.json();
-    return Response.json(data);
+    
+    // Get pagination info from WordPress headers
+    const totalPosts = res.headers.get("X-WP-Total");
+    const totalPages = res.headers.get("X-WP-TotalPages");
+
+    return Response.json({
+      posts: data,
+      totalPosts: totalPosts ? parseInt(totalPosts) : data.length,
+      totalPages: totalPages ? parseInt(totalPages) : 1,
+    });
   } catch (err) {
     return Response.json({ error: err.message }, { status: 500 });
   }

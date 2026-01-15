@@ -2,12 +2,14 @@ import React from "react";
 import { apiFetch } from "@/lib/helper";
 
 const Footer = async () => {
-  const latestPosts = await apiFetch("wp/posts", {
+  const latestPostsData = await apiFetch("wp/posts", {
     per_page: 3,
     orderby: "date",
   });
+  const latestPosts = latestPostsData?.posts || latestPostsData || [];
 
-  const mostViewedPosts = await apiFetch("wp/posts/most-viewed");
+  const mostViewedPostsData = await apiFetch("wp/posts/most-viewed");
+  const mostViewedPosts = mostViewedPostsData || [];
 
   const formatNumber = (str) => {
     return str.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
