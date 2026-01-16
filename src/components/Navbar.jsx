@@ -16,8 +16,8 @@ const Navbar = () => {
         $_fields: "id,title,categories",
         per_page: 100,
       };
-      const names = await apiFetch("wp/posts", filter);
-      setTentang(names);
+      const response = await apiFetch("wp/posts", filter);
+      setTentang(response.posts);
     };
 
     fetchPostNames();

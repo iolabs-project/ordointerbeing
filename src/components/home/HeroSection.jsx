@@ -3,14 +3,16 @@ import HeroCarousel from "./HeroCarouselClient";
 import { randomizeArray, apiFetch } from "@/lib/helper";
 
 const HeroSection = async () => {
-  let posts = await apiFetch("wp/posts", {
+  let response = await apiFetch("wp/posts", {
     per_page: 20,
     categories: "155,124,165",
     orderby: "date",
     _embed: true,
   });
 
-  posts = randomizeArray(posts, 5);
+  
+
+  let posts = randomizeArray(response.posts, 5);
   return (
     <>
       <div className="hero-img">

@@ -2,12 +2,14 @@ import { apiFetch } from "@/lib/helper";
 import React from "react";
 
 const SectionFour = async () => {
-  const article = await apiFetch("wp/posts", {
+  const response = await apiFetch("wp/posts", {
     per_page: 7,
     categories: 124,
     orderby: "date",
     _embed: true,
   });
+
+  let article = response.posts;
   return (
     <div className="section-four">
       <div className="wrapper">
