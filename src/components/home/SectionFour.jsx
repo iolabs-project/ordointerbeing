@@ -9,7 +9,7 @@ const SectionFour = async () => {
     _embed: true,
   });
 
-  let article = response.posts;
+  let article = response?.posts || [];
   return (
     <div className="section-four">
       <div className="wrapper">

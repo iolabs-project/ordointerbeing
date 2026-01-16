@@ -11,8 +11,8 @@ const HeroSection = async () => {
   });
 
   
-
-  let posts = randomizeArray(response.posts, 5);
+  console.log("Hero Section Posts:", response.posts);
+  let posts = randomizeArray(response?.posts || [], 5);
   return (
     <>
       <div className="hero-img">
