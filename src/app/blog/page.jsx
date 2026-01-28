@@ -8,6 +8,7 @@ export default function Blog() {
   const [activeCategory, setActiveCategory] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+  const [aplikasiMeditasiPost, setAplikasiMeditasiPost] = useState(null);
   const postsPerPage = 9;
 
   // Define category order explicitly
@@ -74,10 +75,11 @@ export default function Blog() {
     9999: {
       name: "Aplikasi Meditasi",
       color: "#717171",
-      image: "/assets/hero-home.webp",
+      image: "/assets/kaligrafi.webp", // Will be fetched from article 2087
       subtitle:
-        "Kumpulan aplikasi dan alat bantu meditasi digital untuk mendukung praktik mindfulness Anda. Temukan berbagai sumber daya teknologi yang membantu perjalanan spiritual.",
+        "Aplikasi dan alat bantu meditasi digital untuk mendukung praktik mindfulness Anda. Temukan berbagai sumber daya teknologi yang membantu perjalanan spiritual.",
       style: "normal",
+      specialPostId: 2087, // Special article ID for this category
     },
     124: {
       name: "Artikel",
@@ -140,10 +142,20 @@ export default function Blog() {
   const getHeroContent = () => {
     if (activeCategory && categories[activeCategory]) {
       const cat = categories[activeCategory];
+      // Special case for Aplikasi Meditasi - use article 2087's thumbnail
+      if (activeCategory === "9999" && aplikasiMeditasiPost) {
+        const postImage = aplikasiMeditasiPost._embedded?.["wp:featuredmedia"]?.[0]?.source_url || "/assets/hero-home.webp";
+        return {
+          title: cat.name.toUpperCase(),
+          subtitle: cat.subtitle,
+          image: "/assets/kaligrafi.webp",
+          style: cat.style,
+        };
+      }
       return {
         title: cat.name.toUpperCase(),
         subtitle: cat.subtitle,
-        image: cat.image,
+        image: cat.image || "/assets/hero-home.webp",
         style: cat.style,
       };
     }
@@ -158,20 +170,47 @@ export default function Blog() {
 
   const heroContent = getHeroContent();
 
+  // Fetch the special article 2087 for Aplikasi Meditasi category
+  useEffect(() => {
+    const fetchAplikasiMeditasiPost = async () => {
+      try {
+        const data = await apiFetch("wp/posts/2087", { _embed: true });
+        setAplikasiMeditasiPost(data);
+      } catch (error) {
+        console.error("Error fetching Aplikasi Meditasi post:", error);
+      }
+    };
+    fetchAplikasiMeditasiPost();
+  }, []);
+
   useEffect(() => {
     const fetchPosts = async () => {
       setLoading(true);
       try {
-        const filter = {
-          $_fields: "id,title,excerpt,date,_embedded,categories",
-          per_page: postsPerPage,
-          page: currentPage,
-          _embed: true,
-          ...(activeCategory && { categories: activeCategory }),
-        };
-        const data = await apiFetch("wp/posts", filter);
-        setPosts(data.posts || data);
-        setTotalPages(data.totalPages || 1);
+        // Special case for Aplikasi Meditasi (9999) - show only article 2087
+        if (activeCategory === "9999") {
+          if (aplikasiMeditasiPost) {
+            setPosts([aplikasiMeditasiPost]);
+            setTotalPages(1);
+          } else {
+            // Fetch it if not already loaded
+            const data = await apiFetch("wp/posts/2087", { _embed: true });
+            setPosts([data]);
+            setTotalPages(1);
+            setAplikasiMeditasiPost(data);
+          }
+        } else {
+          const filter = {
+            $_fields: "id,title,excerpt,date,_embedded,categories",
+            per_page: postsPerPage,
+            page: currentPage,
+            _embed: true,
+            ...(activeCategory && { categories: activeCategory }),
+          };
+          const data = await apiFetch("wp/posts", filter);
+          setPosts(data.posts || data);
+          setTotalPages(data.totalPages || 1);
+        }
       } catch (error) {
         console.error("Error fetching posts:", error);
       }
@@ -179,7 +218,7 @@ export default function Blog() {
     };
 
     fetchPosts();
-  }, [activeCategory, currentPage]);
+  }, [activeCategory, currentPage, aplikasiMeditasiPost]);
 
   // Reset to page 1 when category changes
   useEffect(() => {

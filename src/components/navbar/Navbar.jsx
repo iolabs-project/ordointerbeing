@@ -40,11 +40,11 @@ const Navbar = () => {
             <a href="/blog">Blog</a>
           </div>
           <div className="tabs">
-            <a href="#">Jadwal</a>
+            <a href="/jadwal">Jadwal</a>
           </div>
-          <div className="tabs">
+          {/* <div className="tabs">
             <a href="#">Kontak</a>
-          </div>
+          </div> */}
           <NavbarSearchDesktop />
         </div>
 
@@ -56,7 +56,7 @@ const Navbar = () => {
               <a href="/blog">Blog</a>
             </div>
             <div className="mobile-tab">
-              <a href="#">Jadwal</a>
+              <a href="/jadwal">Jadwal</a>
             </div>
             <div className="mobile-tab">
               <a href="#">Kontak</a>

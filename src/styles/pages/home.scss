@@ -644,6 +644,127 @@
       }
     }
   }
+
+  .section-seven {
+    background-color: #fff8ef;
+    padding: 80px 0;
+    padding-top: 40px;
+
+    .wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 50px;
+    }
+
+    .wrapper-mobile {
+      display: none;
+    }
+
+    .top {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+
+      .title {
+        color: #96644d;
+        font-family: $primary-font;
+        font-size: 45px;
+        font-weight: bold;
+        text-transform: uppercase;
+        text-align: center;
+      }
+
+      .subtitle {
+        color: #717171;
+        font-family: $secondary-font;
+        font-size: 18px;
+        font-weight: 400;
+        text-align: center;
+      }
+    }
+
+    .bottom {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+
+      .contact-cards {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        width: 100%;
+        max-width: 500px;
+
+        .contact-card {
+          display: flex;
+          align-items: center;
+          gap: 16px;
+          background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+          padding: 16px 24px;
+          border-radius: 50px;
+          text-decoration: none;
+          transition: all 0.3s ease;
+          box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+
+          &:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+          }
+
+          .whatsapp-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            flex-shrink: 0;
+          }
+
+          .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+
+            .name-row {
+              display: flex;
+              align-items: center;
+              gap: 10px;
+
+              .name {
+                color: white;
+                font-family: $secondary-font;
+                font-size: 18px;
+                font-weight: 600;
+              }
+
+              .status {
+                background: rgba(255, 255, 255, 0.25);
+                color: white;
+                font-family: $secondary-font;
+                font-size: 11px;
+                font-weight: 600;
+                padding: 3px 10px;
+                border-radius: 20px;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+              }
+            }
+
+            .role {
+              color: white;
+              font-family: $secondary-font;
+              font-size: 15px;
+              font-weight: 700;
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
 @media screen and (max-width: 430px) {
@@ -1339,6 +1460,127 @@
                 font-size: 14px;
                 font-weight: bold;
                 margin-top: 10px;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .section-seven {
+      background-color: #fff8ef;
+      padding: 50px 0;
+      padding-top: 20px;
+
+      .wrapper {
+        display: none;
+      }
+
+      .wrapper-mobile {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0px 20px;
+        gap: 30px;
+      }
+
+      .top {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+
+        .title {
+          color: #96644d;
+          font-family: $primary-font;
+          font-size: 28px;
+          font-weight: bold;
+          text-transform: uppercase;
+          text-align: center;
+        }
+
+        .subtitle {
+          color: #717171;
+          font-family: $secondary-font;
+          font-size: 15px;
+          font-weight: 400;
+          text-align: center;
+        }
+      }
+
+      .bottom {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+
+        .contact-cards {
+          display: flex;
+          flex-direction: column;
+          gap: 15px;
+          width: 100%;
+
+          .contact-card {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+            padding: 14px 20px;
+            border-radius: 40px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+
+            &:hover {
+              transform: translateY(-2px);
+              box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+            }
+
+            .whatsapp-icon {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              width: 45px;
+              height: 45px;
+              background: rgba(255, 255, 255, 0.2);
+              border-radius: 50%;
+              flex-shrink: 0;
+            }
+
+            .contact-info {
+              display: flex;
+              flex-direction: column;
+              gap: 2px;
+
+              .name-row {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+
+                .name {
+                  color: white;
+                  font-family: $secondary-font;
+                  font-size: 16px;
+                  font-weight: 600;
+                }
+
+                .status {
+                  background: rgba(255, 255, 255, 0.25);
+                  color: white;
+                  font-family: $secondary-font;
+                  font-size: 10px;
+                  font-weight: 600;
+                  padding: 2px 8px;
+                  border-radius: 20px;
+                  text-transform: uppercase;
+                  letter-spacing: 0.5px;
+                }
+              }
+
+              .role {
+                color: white;
+                font-family: $secondary-font;
+                font-size: 14px;
+                font-weight: 700;
               }
             }
           }
