@@ -23,7 +23,7 @@ const NavbarAboutDropdownMobile = () => {
   }, []);
   return (
     <div className="mobile-tab dropdown" onClick={() => setIsOpen(!isOpen)}>
-      <a href="#">Tentang</a>
+      <a href="#" style={{ whiteSpace: 'nowrap' }}>Tentang <span style={{ fontSize: '12px', display: 'inline' }}>▼</span></a>
       {isOpen && data.length > 0 && (
         <div className="dropdown-menu">
           {data.map((post) => (
