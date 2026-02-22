@@ -24,7 +24,7 @@
       }
 
       .text-1 {
-        font-size: 30px;
+        font-size: 25px;
         font-weight: bold;
         color: black;
         font-family: $primary-font;
@@ -87,7 +87,7 @@
         input {
           width: 100%;
           padding: 12px 10px 12px 40px;
-          font-size: 16px;
+          font-size: 11px;
           border: 1px solid black;
           border-radius: 40px;
           background: transparent;
@@ -118,7 +118,7 @@
           position: relative;
 
           a {
-            font-size: 20px;
+            font-size: 15px;
             font-weight: 400;
             color: black;
             font-family: $primary-font;
@@ -215,7 +215,7 @@
         position: relative;
 
         a {
-          font-size: 25px;
+          font-size: 20px;
           font-weight: 400;
           color: black;
           font-family: $primary-font;
@@ -241,7 +241,7 @@
             font-family: $primary-font;
             color: black;
             padding-left: 40px;
-            font-size: 20px;
+            font-size: 15px;
             width: 150px;
 
             &::placeholder {
