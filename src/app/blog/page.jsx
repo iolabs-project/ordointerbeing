@@ -1,11 +1,13 @@
 "use client";
-import { useState, useEffect } from "react";
+import { Suspense, useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import { apiFetch } from "@/lib/helper";
 
-export default function Blog() {
+function BlogContent() {
+  const searchParams = useSearchParams();
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [activeCategory, setActiveCategory] = useState(null);
+  const [activeCategory, setActiveCategory] = useState(() => searchParams.get("category") || null);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [aplikasiMeditasiPost, setAplikasiMeditasiPost] = useState(null);
@@ -436,5 +438,13 @@ export default function Blog() {
         {renderPagination()}
       </div>
     </div>
+  );
+}
+
+export default function Blog() {
+  return (
+    <Suspense fallback={<div className="loading">Memuat...</div>}>
+      <BlogContent />
+    </Suspense>
   );
 }

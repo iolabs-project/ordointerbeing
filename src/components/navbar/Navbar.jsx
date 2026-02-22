@@ -3,6 +3,8 @@
 import { useState } from "react";
 import NavbarAboutDropdownDesktop from "./NavbarAboutDropdownDesktop";
 import NavbarAboutDropdownMobile from "./NavbarAboutDropdownMobile";
+import NavbarPraktikDropdownDesktop from "./NavbarPraktikDropdownDesktop";
+import NavbarPraktikDropdownMobile from "./NavbarPraktikDropdownMobile";
 import NavbarSearchDesktop from "./NavbarSearchDesktop";
 import NavbarSearchMobile from "./NavbarSearchMobile";
 
@@ -36,6 +38,7 @@ const Navbar = () => {
         {/* Desktop Menu */}
         <div className="menu-tabs">
           <NavbarAboutDropdownDesktop />
+          <NavbarPraktikDropdownDesktop />
           <div className="tabs">
             <a href="/blog">Blog</a>
           </div>
@@ -52,6 +55,7 @@ const Navbar = () => {
         <div className={`mobile-menu ${isMobileMenuOpen ? "open" : ""}`}>
           <div className="mobile-tabs">
             <NavbarAboutDropdownMobile />
+            <NavbarPraktikDropdownMobile />
             <div className="mobile-tab">
               <a href="/blog">Blog</a>
             </div>
