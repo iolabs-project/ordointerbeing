@@ -56,6 +56,7 @@ export default async function Post({ params }) {
       <div className="container">
         <PostContent content={content} />
         <div className="right">
+          <div className="separator"></div>
           <div className="info-box">
             <div className="title">
               <p>Sekilas Info</p>
