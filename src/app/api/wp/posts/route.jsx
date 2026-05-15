@@ -1,4 +1,4 @@
-const url = "https://dev.ordointerbeing.id/wp-json/wp/v2/";
+const url = "https://ordointerbeing.id/wp-json/wp/v2/";
 
 export async function GET(req) {
   try {
