@@ -1,13 +1,12 @@
-const url = "https://ordointerbeing.id/wp-json/wp/v2/";
+import { getPostById } from "@/lib/wp";
 
 export async function GET(req, { params }) {
   try {
-    const { id } = params;
+    const { id } = await params;
 
-    const res = await fetch(`${url}posts/${id}?author=true&_embed`);
-    if (!res.ok) return Response.json({ error: "Failed to fetch post" }, { status: 500 });
+    const data = await getPostById(id);
+    if (data.error) return Response.json(data, { status: 500 });
 
-    const data = await res.json();
     return Response.json(data);
   } catch (err) {
     return Response.json({ error: err.message }, { status: 500 });
