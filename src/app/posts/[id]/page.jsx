@@ -60,7 +60,7 @@ export default async function Post({ params }) {
           <div className="info-box">
             <div className="title">
               <p>Sekilas Info</p>
-              <a href="#">Lihat Semua</a>
+              <a href="/blog">Lihat Semua</a>
             </div>
             <div className="info-content">
                 {infos.map((info) => (
@@ -84,7 +84,7 @@ export default async function Post({ params }) {
           <div className="music-box">
             <div className="title">
               <p>Let's hear music</p>
-              <a href="#">Lihat Semua</a>
+              {/* <a href="#">Lihat </a> */}
             </div>
             <div className="music-content">
                 {musics.map((music) => (

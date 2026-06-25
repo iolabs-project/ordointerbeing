@@ -16,7 +16,7 @@ const SectionTwo = async () => {
         <div className="top">
           <div className="left">
             <p className="text-1">Berita Terkini</p>
-            <a href="#" className="text-2">
+            <a href="/blog" className="text-2">
               Lihat Semua {">"}
             </a>
           </div>
@@ -142,7 +142,7 @@ const SectionTwo = async () => {
           </div>
         </div>
 
-        <a href="#" className="lihat-btn">
+        <a href="/blog" className="lihat-btn">
           Lihat Semua
         </a>
       </div>

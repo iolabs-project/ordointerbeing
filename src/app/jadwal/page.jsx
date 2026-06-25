@@ -1,6 +1,9 @@
-"use client";
+import { apiFetch, getEventSlug, formatEventDateRange } from "@/lib/helper";
 
-const JadwalPage = () => {
+const JadwalPage = async () => {
+  const eventsResponse = await apiFetch("wp/events", { per_page: 6 });
+  const events = Object.values(eventsResponse?.events || {});
+
   const schedules = [
     {
       day: "Hari Senin",
@@ -102,6 +105,60 @@ const JadwalPage = () => {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Events Section */}
+      <section id="jadwal-event" className="event-section">
+        <div className="container">
+          <div className="section-header">
+            <span className="label">Jadwal Event</span>
+            <h2>Acara & Retret Mendatang</h2>
+            <p>
+              Selain latihan rutin, kami juga mengadakan acara dan retret
+              khusus. Klik salah satu acara untuk melihat detailnya.
+            </p>
+          </div>
+
+          {events.length > 0 ? (
+            <div className="event-grid">
+              {events.map((event) => (
+                <a
+                  key={event.id}
+                  href={`/jadwal/${getEventSlug(event.link)}`}
+                  className="event-card"
+                >
+                  <div className="event-date">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                      <line x1="16" y1="2" x2="16" y2="6"></line>
+                      <line x1="8" y1="2" x2="8" y2="6"></line>
+                      <line x1="3" y1="10" x2="21" y2="10"></line>
+                    </svg>
+                    {formatEventDateRange(event.start_date, event.end_date)}
+                  </div>
+                  <h3>{event.title}</h3>
+                  <div className="event-location">
+                    <i className="fa-solid fa-location-dot"></i>
+                    {event.location}
+                  </div>
+                  <span className="event-link">Lihat Detail →</span>
+                </a>
+              ))}
+            </div>
+          ) : (
+            <p className="event-empty">Belum ada acara mendatang.</p>
+          )}
         </div>
       </section>
 

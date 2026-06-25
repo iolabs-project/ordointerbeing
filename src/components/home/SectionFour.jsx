@@ -110,7 +110,7 @@ const SectionFour = async () => {
           </div>
         </div>
 
-        <a href="#" className="button">
+        <a href="/blog" className="button">
           Lihat semua
         </a>
       </div>
@@ -169,7 +169,7 @@ const SectionFour = async () => {
           </div>
         </div>
 
-        <a href="#" className="button">
+        <a href="/blog" className="button">
           Lihat semua
         </a>
       </div>

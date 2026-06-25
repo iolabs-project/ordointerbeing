@@ -1,5 +1,5 @@
 import React from "react";
-import { apiFetch } from "@/lib/helper";
+import { apiFetch, getEventSlug, formatEventDateRange } from "@/lib/helper";
 
 const Footer = async () => {
   const latestPostsResponse = await apiFetch("wp/posts", {
@@ -10,6 +10,9 @@ const Footer = async () => {
 
   const mostViewedPostsResponse = await apiFetch("wp/posts/most-viewed");
   const mostViewedPosts = mostViewedPostsResponse?.posts || [];
+
+  const upcomingEventsResponse = await apiFetch("wp/events", { per_page: 2 });
+  const upcomingEvents = Object.values(upcomingEventsResponse?.events || {});
 
   const formatNumber = (str) => {
     return str.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -61,25 +64,22 @@ const Footer = async () => {
           <div className="bottom-group">
             <div className="left-group">
               <p className="title">Upcoming Event</p>
-              <a className="link-text">The Art of Mindful Living 2025</a>
-              <div className="group-text">
-                <i className="fa-solid fa-location-dot"></i>
-                Plum Village Thailand
-              </div>
-              <div className="group-text mb">
-                <i className="fa-regular fa-calendar-days"></i>
-                11 Jul s.d. 07 Oct 2025
-              </div>
-              <a className="link-text">Retret Umum: Nothing To Do Nowhere To Go</a>
-              <div className="group-text">
-                <i className="fa-solid fa-location-dot"></i>
-                Wyndham Tamansari Jivva Resort
-              </div>
-              <div className="group-text">
-                <i className="fa-regular fa-calendar-days"></i>
-                30 Apr s.d. 04 May 2025
-              </div>
-              <a className="btn-footer">All Events</a>
+              {upcomingEvents.map((event, index) => (
+                <React.Fragment key={event.id}>
+                  <a href={`/jadwal/${getEventSlug(event.link)}`} className="link-text">
+                    {event.title}
+                  </a>
+                  <div className="group-text">
+                    <i className="fa-solid fa-location-dot"></i>
+                    {event.location}
+                  </div>
+                  <div className={`group-text${index < upcomingEvents.length - 1 ? " mb" : ""}`}>
+                    <i className="fa-regular fa-calendar-days"></i>
+                    {formatEventDateRange(event.start_date, event.end_date)}
+                  </div>
+                </React.Fragment>
+              ))}
+              <a href="/jadwal#jadwal-event" className="btn-footer">All Events</a>
             </div>
 
             <div className="middle-group">
