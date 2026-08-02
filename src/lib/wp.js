@@ -1,5 +1,5 @@
-const WP_URL = "https://ordointerbeing.id/wp-json/wp/v2/";
-const CUSTOM_URL = "https://ordointerbeing.id/wp-json/custom/v1/";
+const WP_URL = "https://cms.ordointerbeing.id/wp-json/wp/v2/";
+const CUSTOM_URL = "https://cms.ordointerbeing.id/wp-json/custom/v1/";
 
 export async function getPosts(filters = {}) {
   const query = new URLSearchParams(filters).toString();
