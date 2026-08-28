@@ -1,6 +1,5 @@
-const InfoCard = ({ id, title, category, date, content }) => {
+const InfoCard = ({ id, title, category, date, img }) => {
   //get the first image from content
-  const img = content.match(/<img[^>]+src="([^">]+)"/)?.[1] || null;
 
   return (
     <div className="info-card">

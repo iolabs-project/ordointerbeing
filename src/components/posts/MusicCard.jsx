@@ -1,6 +1,6 @@
 "use client";
 
-const MusicCard = ({ title, desc, content, img }) => {
+const MusicCard = ({ id,title, desc, content, img }) => {
   const capitalizeWords = (str) => {
     return str
       .split("-")
@@ -29,11 +29,11 @@ const MusicCard = ({ title, desc, content, img }) => {
   return (
     <div className="music-card">
       <img src={img} alt="" />
-      <p className="music-title">{titleClean}</p>
+      <a href={`/posts/${id}`}  className="music-title">{titleClean}</a>
       <p className="music-description">{descClean}</p>
-      <button className="music-link" onClick={handleDownload}>
+      {/* <button className="music-link" onClick={handleDownload}>
         Download MP3
-      </button>
+      </button> */}
     </div>
   );
 };

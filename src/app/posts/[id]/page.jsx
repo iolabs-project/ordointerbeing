@@ -17,11 +17,10 @@ export default async function Post({ params }) {
       per_page: 2,
       _fields: "id,title,content,date,categories,_embedded, _links",
       orderby: "date",
-      _embed: "wp:term",
+      _embed: "wp:term,wp:featuredmedia",
     }
   );
   const infos = Array.isArray(infosData?.posts) ? infosData.posts : Array.isArray(infosData) ? infosData : [];
-
   const musicsData = await apiFetch('wp/posts',
     {
       per_page: 2,
@@ -74,7 +73,6 @@ export default async function Post({ params }) {
                     key={info.id} 
                     id={info.id}
                     title={info.title.rendered}
-                    content={info.content.rendered}
                     date={new Date(info.date).toLocaleDateString("en-US", {
                       day: "numeric",
                       month: "long",
@@ -82,6 +80,7 @@ export default async function Post({ params }) {
                     })}
                     category={info._embedded?.["wp:term"]?.[0]?.flat().map(cat => cat.name) || []}
                     link={info._links?.self?.[0]?.href || "#"}
+                    img={info._embedded?.["wp:featuredmedia"]?.[0]?.source_url || "/assets/default-info.png"}
                   />
                 ))}
             </div>
@@ -100,7 +99,7 @@ export default async function Post({ params }) {
                     title={music.title.rendered}
                     desc={music.excerpt.rendered}
                     content={music.content.rendered}
-                    img={music.jetpack_featured_media_url || "/assets/default-music.png"}
+                    img={music._embedded?.["wp:featuredmedia"]?.[0]?.source_url || "/assets/default-music.png"}
                   />
                 ))}
             </div>  
