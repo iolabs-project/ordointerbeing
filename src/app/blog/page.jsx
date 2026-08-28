@@ -210,8 +210,8 @@ function BlogContent() {
             ...(activeCategory && { categories: activeCategory }),
           };
           const data = await apiFetch("wp/posts", filter);
-          setPosts(data.posts || data);
-          setTotalPages(data.totalPages || 1);
+          setPosts(Array.isArray(data?.posts) ? data.posts : Array.isArray(data) ? data : []);
+          setTotalPages(data?.totalPages || 1);
         }
       } catch (error) {
         console.error("Error fetching posts:", error);

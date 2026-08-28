@@ -15,8 +15,12 @@ const NavbarAboutDropdownMobile = () => {
         $_fields: "id,title,categories",
         per_page: 100,
       };
-      const response = await apiFetch("wp/posts", filter);
-      setData(response.posts);
+      try {
+        const response = await apiFetch("wp/posts", filter);
+        setData(Array.isArray(response?.posts) ? response.posts : []);
+      } catch {
+        setData([]);
+      }
     };
 
     fetchPostNames();

@@ -1,3 +1,4 @@
+import { notFound } from "next/navigation";
 import InfoCard from "@/components/posts/InfoCard";
 import MusicCard from "@/components/posts/MusicCard";
 import PostContent from "@/components/posts/PostContent";
@@ -6,25 +7,30 @@ import { apiFetch } from "@/lib/helper";
 export default async function Post({ params }) {
   const { id } = await params;
   const post = await apiFetch(`wp/posts/${id}`);
-  const infosData = await apiFetch('wp/posts', 
-    { 
+
+  if (!post || post.error || post.code === "rest_post_invalid_id" || !post.content) {
+    notFound();
+  }
+
+  const infosData = await apiFetch('wp/posts',
+    {
       per_page: 2,
       _fields: "id,title,content,date,categories,_embedded, _links",
       orderby: "date",
       _embed: "wp:term",
     }
   );
-  const infos = infosData?.posts || infosData || [];
-  
-  const musicsData = await apiFetch('wp/posts', 
-    { 
+  const infos = Array.isArray(infosData?.posts) ? infosData.posts : Array.isArray(infosData) ? infosData : [];
+
+  const musicsData = await apiFetch('wp/posts',
+    {
       per_page: 2,
       categories: 215,
       orderby: "date",
       _embed: true,
     }
   );
-  const musics = musicsData?.posts || musicsData || [];
+  const musics = Array.isArray(musicsData?.posts) ? musicsData.posts : Array.isArray(musicsData) ? musicsData : [];
 
   //* Post Section Processing 
   const heroURL = post.jetpack_featured_media_url || "";
@@ -74,7 +80,7 @@ export default async function Post({ params }) {
                       month: "long",
                       year: "numeric",
                     })}
-                    category={info._embedded?.["wp:term"][0]?.flat().map(cat => cat.name) || []}
+                    category={info._embedded?.["wp:term"]?.[0]?.flat().map(cat => cat.name) || []}
                     link={info._links?.self?.[0]?.href || "#"}
                   />
                 ))}
