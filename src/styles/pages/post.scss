@@ -415,11 +415,47 @@
 
         .facebook-content {
           width: 100%;
-          
+
           iframe {
             width: 100% !important;
             max-width: 100%;
             border-radius: 15px;
+          }
+
+          .facebook-fallback {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+            padding: 40px 20px;
+            border-radius: 15px;
+            background-color: #f4ede4;
+            text-decoration: none;
+            text-align: center;
+
+            i {
+              font-size: 40px;
+              color: #96644d;
+            }
+
+            p {
+              font-family: $third-font;
+              font-size: 18px;
+              font-weight: bold;
+              color: #050505;
+              margin: 0;
+            }
+
+            span {
+              font-family: $third-font;
+              font-size: 14px;
+              color: #96644d;
+            }
+
+            &:hover span {
+              text-decoration: underline;
+            }
           }
         }
       }

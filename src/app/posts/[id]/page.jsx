@@ -1,35 +1,35 @@
-import { notFound } from "next/navigation";
 import InfoCard from "@/components/posts/InfoCard";
 import MusicCard from "@/components/posts/MusicCard";
 import PostContent from "@/components/posts/PostContent";
 import { apiFetch } from "@/lib/helper";
 
+function getPrimaryCategory(embedded) {
+  const names = embedded?.["wp:term"]?.[0]?.map((cat) => cat.name) || [];
+  return names.find((name) => name.toLowerCase() !== "uncategorized") || names[0] || "";
+}
+
 export default async function Post({ params }) {
   const { id } = await params;
   const post = await apiFetch(`wp/posts/${id}`);
-
-  if (!post || post.error || post.code === "rest_post_invalid_id" || !post.content) {
-    notFound();
-  }
-
-  const infosData = await apiFetch('wp/posts',
-    {
+  const infosData = await apiFetch('wp/posts', 
+    { 
       per_page: 2,
-      _fields: "id,title,content,date,categories,_embedded, _links",
+      _fields: "id,title,date,categories,jetpack_featured_media_url,_embedded, _links",
       orderby: "date",
-      _embed: "wp:term,wp:featuredmedia",
+      _embed: "wp:term",
     }
   );
-  const infos = Array.isArray(infosData?.posts) ? infosData.posts : Array.isArray(infosData) ? infosData : [];
-  const musicsData = await apiFetch('wp/posts',
-    {
+  const infos = infosData?.posts || infosData || [];
+  
+  const musicsData = await apiFetch('wp/posts', 
+    { 
       per_page: 2,
       categories: 215,
       orderby: "date",
       _embed: true,
     }
   );
-  const musics = Array.isArray(musicsData?.posts) ? musicsData.posts : Array.isArray(musicsData) ? musicsData : [];
+  const musics = musicsData?.posts || musicsData || [];
 
   //* Post Section Processing 
   const heroURL = post.jetpack_featured_media_url || "";
@@ -70,17 +70,17 @@ export default async function Post({ params }) {
             <div className="info-content">
                 {infos.map((info) => (
                   <InfoCard
-                    key={info.id} 
+                    key={info.id}
                     id={info.id}
                     title={info.title.rendered}
+                    img={info.jetpack_featured_media_url || ""}
                     date={new Date(info.date).toLocaleDateString("en-US", {
                       day: "numeric",
                       month: "long",
                       year: "numeric",
                     })}
-                    category={info._embedded?.["wp:term"]?.[0]?.flat().map(cat => cat.name) || []}
+                    category={getPrimaryCategory(info._embedded)}
                     link={info._links?.self?.[0]?.href || "#"}
-                    img={info._embedded?.["wp:featuredmedia"]?.[0]?.source_url || "/assets/default-info.png"}
                   />
                 ))}
             </div>
@@ -99,7 +99,7 @@ export default async function Post({ params }) {
                     title={music.title.rendered}
                     desc={music.excerpt.rendered}
                     content={music.content.rendered}
-                    img={music._embedded?.["wp:featuredmedia"]?.[0]?.source_url || "/assets/default-music.png"}
+                    img={music.jetpack_featured_media_url || "/assets/default-music.png"}
                   />
                 ))}
             </div>  
@@ -111,16 +111,16 @@ export default async function Post({ params }) {
               <a href="https://www.facebook.com/plumvillageindo" target="_blank" rel="noopener noreferrer">lihat semua</a>
             </div>
             <div className="facebook-content">
-              <iframe 
-                src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fplumvillageindo&tabs=timeline&width=340&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false&appId" 
-                width="340" 
-                height="500" 
-                style={{ border: 'none', overflow: 'hidden' }} 
-                scrolling="no" 
-                frameBorder="0" 
-                allowFullScreen={true} 
-                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-              ></iframe>
+              <a
+                href="https://www.facebook.com/plumvillageindo"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="facebook-fallback"
+              >
+                <i className="fa-brands fa-facebook"></i>
+                <p>Plum Village Indonesia</p>
+                <span>Kunjungi halaman Facebook kami</span>
+              </a>
             </div>
           </div>
         </div>
