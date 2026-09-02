@@ -5,11 +5,31 @@ const Footer = async () => {
   const latestPostsResponse = await apiFetch("wp/posts", {
     per_page: 3,
     orderby: "date",
+    _embed: true,
   });
-  const latestPosts = latestPostsResponse?.posts || [];
+  const recentPosts = latestPostsResponse?.posts || [];
 
-  const mostViewedPostsResponse = await apiFetch("wp/posts/most-viewed");
-  const mostViewedPosts = mostViewedPostsResponse?.posts || [];
+  // Hardcoded most viewed posts
+  const mostViewedIds = [1501, 195, 989, 1826, 2314];
+  const mostViewedViews = {
+    1501: "14513",
+    195: "13648",
+    989: "11986",
+    1826: "11920",
+    2314: "11812",
+  };
+
+  const mostViewedResponse = await apiFetch("wp/posts", {
+    include: mostViewedIds.join(","),
+    _embed: true,
+    per_page: 5,
+  });
+  const mostViewedPosts = (mostViewedResponse?.posts || [])
+    .map((post) => ({
+      ...post,
+      post_views: mostViewedViews[post.id] || "0",
+    }))
+    .sort((a, b) => parseInt(b.post_views) - parseInt(a.post_views));
 
   const upcomingEventsResponse = await apiFetch("wp/events", { per_page: 2 });
   const upcomingEvents = Object.values(upcomingEventsResponse?.events || {});
@@ -108,20 +128,49 @@ const Footer = async () => {
 
             <div className="right-group">
               <p className="title">Recent Post</p>
-              {latestPosts.map((post) => (
-                <a key={post.id} href={`/posts/${post.id}`} className="link-text">
-                  {post.title.rendered}
-                </a>
-              ))}
-              <a className="link-text read-more">Read more...</a>
+              <div className="post-cards">
+                {recentPosts.map((post) => (
+                  <a key={post.id} href={`/posts/${post.id}`} className="post-card">
+                    <img
+                      src={post.jetpack_featured_media_url || "/assets/placeholder.jpg"}
+                      alt={post.title.rendered}
+                      className="post-card-img"
+                    />
+                    <div className="post-card-content">
+                      <p className="post-card-title">{post.title.rendered}</p>
+                    </div>
+                  </a>
+                ))}
+              </div>
+              <a href="/blog" className="link-text read-more">Read more...</a>
 
               <p className="title">Most Viewed Post</p>
-              {mostViewedPosts.slice(0, 3).map((post) => (
-                <a key={post.ID} href={`/posts/${post.ID}`} className="link-text">
-                  {post.post_title} <span>({formatNumber(post.post_views)})</span>
-                </a>
-              ))}
-              <a className="link-text read-more">Read more...</a>
+              <div className="post-cards">
+                {mostViewedPosts.length > 0 ? (
+                  mostViewedPosts.slice(0, 5).map((post) => (
+                    <a key={post.id} href={`/posts/${post.id}`} className="post-card">
+                      {post.jetpack_featured_media_url ? (
+                        <img
+                          src={post.jetpack_featured_media_url}
+                          alt={post.title.rendered}
+                          className="post-card-img"
+                        />
+                      ) : (
+                        <div className="post-card-img placeholder"></div>
+                      )}
+                      <div className="post-card-content">
+                        <p className="post-card-title">{post.title.rendered}</p>
+                        <p className="post-card-views">
+                          <i className="fa-solid fa-eye"></i> {formatNumber(post.post_views)}
+                        </p>
+                      </div>
+                    </a>
+                  ))
+                ) : (
+                  <p className="no-posts">No posts available</p>
+                )}
+              </div>
+              <a href="/blog" className="link-text read-more">Read more...</a>
             </div>
           </div>
 
@@ -131,7 +180,7 @@ const Footer = async () => {
               <p>Privacy Policy</p>
               <p>Cookie Setting</p>
             </div>
-            <div className="right">© 2025 Komunitas Zen Plum Village</div>
+            <div className="right">© 2026 Komunitas Zen Plum Village</div>
           </div>
         </div>
       </div>

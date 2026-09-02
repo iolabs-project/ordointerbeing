@@ -1,6 +1,7 @@
 import InfoCard from "@/components/posts/InfoCard";
 import MusicCard from "@/components/posts/MusicCard";
 import PostContent from "@/components/posts/PostContent";
+import ShareButtons from "@/components/posts/ShareButtons";
 import { apiFetch } from "@/lib/helper";
 
 function getPrimaryCategory(embedded) {
@@ -57,9 +58,13 @@ export default async function Post({ params }) {
     <div className="post-section">
       <div className="hero-figure">
         <img src={heroURL} alt="" />
+        <p className="hero-text">{post.title.rendered}</p>
       </div>
       <div className="container">
-        <PostContent content={content} />
+        <div className="left">
+          <PostContent content={content} />
+          <ShareButtons title={post.title.rendered} />
+        </div>
         <div className="right">
           <div className="separator"></div>
           <div className="info-box">

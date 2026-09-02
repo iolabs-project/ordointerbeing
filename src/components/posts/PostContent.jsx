@@ -37,7 +37,7 @@ export default function PostContent({ content }) {
   return (
     <div
       ref={contentRef}
-      className="left"
+      className=""
       dangerouslySetInnerHTML={{ __html: content }}
     />
   );

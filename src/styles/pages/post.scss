@@ -10,18 +10,47 @@
     font-size: 1rem;
     margin-bottom: 30px;
     text-align: justify;
+    line-height: 1.7;
   }
 
   .hero-figure {
     width: 100%;
+    display: flex;
+    position: relative;
 
     img {
       width: 100%;
       height: auto;
+      object-fit: cover;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      pointer-events: none;
     }
 
     figcaption {
       display: none;
+    }
+
+    .hero-text {
+      position: absolute;
+      bottom: 50%;
+      left: 50%;
+      transform: translate(-50%, 50%);
+      color: #fff8ef;
+      font-family: $third-font;
+      font-size: 5rem;
+      font-weight: bold;
+      text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.7);
+      z-index: 1;
+      text-align: center;
     }
   }
 
@@ -115,7 +144,11 @@
       .wp-block-list {
         margin-bottom: 30px;
         padding-left: 40px;
-        margin-top: -20px;
+        // margin-top: -20px;
+
+        li {
+          line-height: 1.7;
+        }
       }
 
       .blocks-2 {
@@ -469,7 +502,7 @@
     p {
       color: #7d7d7d;
       font-family: $third-font;
-      font-size: 16px;
+      font-size: 13px;
       display: flex;
       align-items: center;
 
@@ -488,6 +521,52 @@
       }
 
       padding: 0%;
+    }
+  }
+
+  .share-buttons {
+    margin-top: 40px;
+    padding-top: 30px;
+    border-top: 1px solid #e0d5c8;
+
+    .share-title {
+      font-family: $third-font;
+      font-size: 16px;
+      font-weight: 600;
+      color: #050505;
+      margin-bottom: 15px;
+    }
+
+    .share-icons {
+      display: flex;
+      gap: 12px;
+
+      .share-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        color: white;
+        text-decoration: none;
+        transition: transform 0.2s ease, opacity 0.2s ease;
+
+        i {
+          font-size: 18px;
+        }
+
+        .x-icon {
+          font-size: 20px;
+          font-weight: bold;
+          line-height: 1;
+        }
+
+        &:hover {
+          transform: scale(1.1);
+          opacity: 0.9;
+        }
+      }
     }
   }
 }
@@ -511,6 +590,21 @@
           iframe {
             width: 100%;
             height: 200px;
+          }
+        }
+      }
+
+      .share-buttons {
+        .share-icons {
+          gap: 10px;
+
+          .share-link {
+            width: 36px;
+            height: 36px;
+
+            i {
+              font-size: 16px;
+            }
           }
         }
       }
