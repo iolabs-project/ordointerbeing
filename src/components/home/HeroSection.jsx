@@ -7,11 +7,10 @@ const HeroSection = async () => {
     per_page: 20,
     categories: "155,124,165",
     orderby: "date",
-    _embed: true,
+    _fields: "id,title,date,jetpack_featured_media_url",
   });
 
   
-  console.log("Hero Section Posts:", response.posts);
   let posts = randomizeArray(response?.posts || [], 5);
   return (
     <>

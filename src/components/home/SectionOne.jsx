@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 const SectionOne = () => {
   return (
@@ -19,9 +20,9 @@ const SectionOne = () => {
         </p>
 
         <div className="wrapper-button">
-          <a href="/posts/271" className="button">
+          <Link href="/posts/271" className="button">
             Tentang Plum Village
-          </a>
+          </Link>
           <a href="https://zenplumvillage.net/" className="button">
             Kelas Moodle
           </a>
@@ -47,9 +48,9 @@ const SectionOne = () => {
         </p>
 
         <div className="wrapper-button">
-          <a href="/posts/271" className="button">
+          <Link href="/posts/271" className="button">
             Tentang Plum Village
-          </a>
+          </Link>
           <a href="https://zenplumvillage.net/" className="button">
             Kelas Moodle
           </a>

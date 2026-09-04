@@ -1,10 +1,13 @@
 const WP_URL = "https://cms.ordointerbeing.id/wp-json/wp/v2/";
 const CUSTOM_URL = "https://cms.ordointerbeing.id/wp-json/custom/v1/";
 
+// Cache all WordPress API responses for 5 minutes (ISR)
+const FETCH_OPTIONS = { next: { revalidate: 300 } };
+
 export async function getPosts(filters = {}) {
   try {
     const query = new URLSearchParams(filters).toString();
-    const res = await fetch(`${WP_URL}posts?${query}`);
+    const res = await fetch(`${WP_URL}posts?${query}`, FETCH_OPTIONS);
     if (!res.ok) return { error: "Failed to fetch posts" };
 
     const data = await res.json();
@@ -23,7 +26,7 @@ export async function getPosts(filters = {}) {
 
 export async function getPostById(id) {
   try {
-    const res = await fetch(`${WP_URL}posts/${id}?author=true&_embed`);
+    const res = await fetch(`${WP_URL}posts/${id}?_embed&_fields=id,title,content,date,jetpack_featured_media_url`, FETCH_OPTIONS);
     if (!res.ok) return { error: "Failed to fetch post" };
     return await res.json();
   } catch (err) {
@@ -33,7 +36,7 @@ export async function getPostById(id) {
 
 export async function getMostViewedPosts() {
   try {
-    const res = await fetch(`${CUSTOM_URL}most-viewed`);
+    const res = await fetch(`${CUSTOM_URL}most-viewed`, FETCH_OPTIONS);
     if (!res.ok) return { error: "Failed to fetch most viewed posts" };
     return await res.json();
   } catch (err) {
@@ -44,7 +47,7 @@ export async function getMostViewedPosts() {
 export async function getEvents(filters = {}) {
   try {
     const query = new URLSearchParams(filters).toString();
-    const res = await fetch(`${CUSTOM_URL}events?${query}`);
+    const res = await fetch(`${CUSTOM_URL}events?${query}`, FETCH_OPTIONS);
     if (!res.ok) return { error: "Failed to fetch events" };
     return await res.json();
   } catch (err) {
@@ -54,7 +57,7 @@ export async function getEvents(filters = {}) {
 
 export async function getEventBySlug(slug) {
   try {
-    const res = await fetch(`${CUSTOM_URL}events/${slug}`);
+    const res = await fetch(`${CUSTOM_URL}events/${slug}`, FETCH_OPTIONS);
     if (!res.ok) return { error: "Failed to fetch event" };
     return await res.json();
   } catch (err) {

@@ -1,44 +1,11 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React from "react";
 
-const SectionFive = () => {
-  const [videos, setVideos] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    const fetchVideos = async () => {
-      try {
-        const response = await fetch('/api/youtube/latest');
-        const data = await response.json();
-        
-        console.log('YouTube API Response:', data);
-        
-        if (data.error) {
-          setError(data.error);
-          console.error('YouTube API Error:', data.error);
-        }
-        
-        if (data.videos && data.videos.length > 0) {
-          setVideos(data.videos);
-        } else {
-          console.log('No videos returned from API');
-        }
-      } catch (error) {
-        console.error('Error fetching videos:', error);
-        setError(error.message);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchVideos();
-  }, []);
-
+const SectionFive = ({ videos = [], loading = false, error = null }) => {
   const formatDate = (dateString) => {
     const date = new Date(dateString);
-    const months = ['January', 'February', 'March', 'April', 'May', 'June', 
+    const months = ['January', 'February', 'March', 'April', 'May', 'June',
                    'July', 'August', 'September', 'October', 'November', 'December'];
     return `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`;
   };
@@ -67,8 +34,8 @@ const SectionFive = () => {
       return (
         <div className="group-box">
           <p className="text-1">
-            {error 
-              ? `Error: ${error}` 
+            {error
+              ? `Error: ${error}`
               : 'No videos available. Please check your YouTube API key in .env.local'}
           </p>
         </div>
@@ -76,19 +43,19 @@ const SectionFive = () => {
     }
 
     return videos.map((video) => (
-      <a 
-        key={video.id} 
+      <a
+        key={video.id}
         className="group-box"
         href={`https://www.youtube.com/watch?v=${video.id}`}
         target="_blank"
         rel="noopener noreferrer"
       >
-        <iframe 
-          className="video" 
-          src={`https://www.youtube.com/embed/${video.id}`} 
+        <iframe
+          className="video"
+          src={`https://www.youtube.com/embed/${video.id}`}
           title={video.title}
-          frameBorder="0" 
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
         ></iframe>
         <p className="text-1">{video.title}</p>

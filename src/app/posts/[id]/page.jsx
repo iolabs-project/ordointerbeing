@@ -1,8 +1,22 @@
+import { notFound } from "next/navigation";
+import Link from "next/link";
+import Image from "next/image";
 import InfoCard from "@/components/posts/InfoCard";
 import MusicCard from "@/components/posts/MusicCard";
 import PostContent from "@/components/posts/PostContent";
 import ShareButtons from "@/components/posts/ShareButtons";
 import { apiFetch } from "@/lib/helper";
+
+// Pre-render the 20 most recent posts at build time
+export async function generateStaticParams() {
+  const data = await apiFetch("wp/posts", {
+    per_page: 20,
+    _fields: "id",
+    orderby: "date",
+  });
+  const posts = data?.posts || data || [];
+  return posts.map((post) => ({ id: String(post.id) }));
+}
 
 function getPrimaryCategory(embedded) {
   const names = embedded?.["wp:term"]?.[0]?.map((cat) => cat.name) || [];
@@ -11,30 +25,35 @@ function getPrimaryCategory(embedded) {
 
 export default async function Post({ params }) {
   const { id } = await params;
-  const post = await apiFetch(`wp/posts/${id}`);
-  const infosData = await apiFetch('wp/posts', 
-    { 
+
+  // Parallelize all API calls instead of sequential awaits
+  const [post, infosData, musicsData] = await Promise.all([
+    apiFetch(`wp/posts/${id}`),
+    apiFetch('wp/posts', {
       per_page: 2,
-      _fields: "id,title,date,categories,jetpack_featured_media_url,_embedded, _links",
+      _fields: "id,title,date,categories,jetpack_featured_media_url",
       orderby: "date",
       _embed: "wp:term",
-    }
-  );
-  const infos = infosData?.posts || infosData || [];
-  
-  const musicsData = await apiFetch('wp/posts', 
-    { 
+    }),
+    apiFetch('wp/posts', {
       per_page: 2,
       categories: 215,
       orderby: "date",
-      _embed: true,
-    }
-  );
+      _fields: "id,title,excerpt,content,jetpack_featured_media_url",
+    }),
+  ]);
+
+  const infos = infosData?.posts || infosData || [];
   const musics = musicsData?.posts || musicsData || [];
 
-  //* Post Section Processing 
+  // Handle missing or error post
+  if (!post || post.error || !post.title) {
+    notFound();
+  }
+
+  //* Post Section Processing
   const heroURL = post.jetpack_featured_media_url || "";
-  let content = post.content.rendered;
+  let content = post.content?.rendered || "";
 
   const author = post._embedded?.author?.[0]?.name || "Unknown";
   const date = new Date(post.date).toLocaleDateString("en-US", {
@@ -57,7 +76,16 @@ export default async function Post({ params }) {
   return (
     <div className="post-section">
       <div className="hero-figure">
-        <img src={heroURL} alt="" />
+        {heroURL && (
+          <Image
+            src={heroURL}
+            alt={post.title.rendered}
+            fill
+            sizes="100vw"
+            priority
+            style={{ objectFit: "cover" }}
+          />
+        )}
         <p className="hero-text">{post.title.rendered}</p>
       </div>
       <div className="container">
@@ -70,7 +98,7 @@ export default async function Post({ params }) {
           <div className="info-box">
             <div className="title">
               <p>Sekilas Info</p>
-              <a href="/blog">Lihat Semua</a>
+              <Link href="/blog">Lihat Semua</Link>
             </div>
             <div className="info-content">
                 {infos.map((info) => (

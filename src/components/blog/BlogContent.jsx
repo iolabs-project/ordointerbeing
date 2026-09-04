@@ -1,6 +1,8 @@
 "use client";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
+import Image from "next/image";
 import { apiFetch } from "@/lib/helper";
 import { categoryIdToSlug } from "@/lib/categorySlugs";
 
@@ -204,10 +206,9 @@ export default function BlogContent({ initialCategory = null }) {
           }
         } else {
           const filter = {
-            $_fields: "id,title,excerpt,date,_embedded,categories",
+            _fields: "id,title,excerpt,date,categories,jetpack_featured_media_url",
             per_page: postsPerPage,
             page: currentPage,
-            _embed: true,
             ...(activeCategory && { categories: activeCategory }),
           };
           const data = await apiFetch("wp/posts", filter);
@@ -329,17 +330,7 @@ export default function BlogContent({ initialCategory = null }) {
   };
 
   const getPostImage = (post) => {
-    if (post._embedded?.["wp:featuredmedia"]?.[0]?.source_url) {
-      return post._embedded["wp:featuredmedia"][0].source_url;
-    }
-    return "/assets/default-post.jpg";
-  };
-
-  const getPostAuthor = (post) => {
-    if (post._embedded?.author?.[0]?.name) {
-      return post._embedded.author[0].name;
-    }
-    return "Admin";
+    return post.jetpack_featured_media_url || "/assets/default-post.jpg";
   };
 
   return (
@@ -347,10 +338,14 @@ export default function BlogContent({ initialCategory = null }) {
       {/* Hero Section */}
       <div className={`blog-hero ${heroContent.style === "grayscale" ? "grayscale" : ""}`}>
         <div className="hero-overlay"></div>
-        <img
+        <Image
           src={heroContent.image}
           alt={heroContent.title}
           className="hero-image"
+          fill
+          sizes="100vw"
+          priority
+          style={{ objectFit: "cover" }}
         />
         <div className="hero-content">
           <h1 className="hero-title">{heroContent.title}</h1>
@@ -388,36 +383,24 @@ export default function BlogContent({ initialCategory = null }) {
           <div className="posts-grid">
             {posts.map((post) => (
               <div key={post.id} className="post-card">
-                <a href={`/posts/${post.id}`} className="card-image-link">
-                  <img
+                <Link href={`/posts/${post.id}`} className="card-image-link">
+                  <Image
                     src={getPostImage(post)}
                     alt={post.title?.rendered || "Post"}
                     className="card-image"
+                    fill
+                    loading="lazy"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   />
-                </a>
+                </Link>
                 <div className="card-content">
-                  <a href={`/posts/${post.id}`} className="card-title">
+                  <Link href={`/posts/${post.id}`} className="card-title">
                     {post.title?.rendered}
-                  </a>
+                  </Link>
                   <p className="card-excerpt">
                     {stripHtml(post.excerpt?.rendered)}
                   </p>
                   <div className="card-meta">
-                    <span className="meta-author">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="14"
-                        height="14"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                      >
-                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                        <circle cx="12" cy="7" r="4"></circle>
-                      </svg>
-                      Posted by <span>{getPostAuthor(post)}</span>
-                    </span>
                     <span className="meta-date">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"

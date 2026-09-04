@@ -1,4 +1,5 @@
 import { apiFetch } from "@/lib/helper";
+import Link from "next/link";
 import React from "react";
 
 const SectionFour = async () => {
@@ -6,7 +7,7 @@ const SectionFour = async () => {
     per_page: 7,
     categories: 124,
     orderby: "date",
-    _embed: true,
+    _fields: "id,title,date,jetpack_featured_media_url",
   });
 
   let article = response?.posts || [];
@@ -20,7 +21,7 @@ const SectionFour = async () => {
 
         <div className="bottom">
           <div className="left">
-            <a href={`/posts/${article[1]?.id}`} className="card-box">
+            <Link href={`/posts/${article[1]?.id}`} className="card-box">
               <img src={article[1]?.jetpack_featured_media_url} alt="" />
               <div className="group-text">
                 <p className="text-1">{article[1]?.title.rendered}</p>
@@ -32,8 +33,8 @@ const SectionFour = async () => {
                   })}
                 </p>
               </div>
-            </a>
-            <a href={`/posts/${article[2]?.id}`} className="card-box">
+            </Link>
+            <Link href={`/posts/${article[2]?.id}`} className="card-box">
               <img src={article[2]?.jetpack_featured_media_url} alt="" />
               <div className="group-text">
                 <p className="text-1">{article[2]?.title.rendered}</p>
@@ -45,8 +46,8 @@ const SectionFour = async () => {
                   })}
                 </p>
               </div>
-            </a>
-            <a href={`/posts/${article[3]?.id}`} className="card-box">
+            </Link>
+            <Link href={`/posts/${article[3]?.id}`} className="card-box">
               <img src={article[3]?.jetpack_featured_media_url} alt="" />
               <div className="group-text">
                 <p className="text-1">{article[3]?.title.rendered}</p>
@@ -59,16 +60,16 @@ const SectionFour = async () => {
                   })}
                 </p>
               </div>
-            </a>
+            </Link>
           </div>
           <div className="middle">
-            <a href={`/posts/${article[0]?.id}`}>
+            <Link href={`/posts/${article[0]?.id}`}>
               <img src={article[0]?.jetpack_featured_media_url} alt="" />
               <p className="text-1">{article[0]?.title.rendered}</p>
-            </a>
+            </Link>
           </div>
           <div className="right">
-            <a href={`/posts/${article[4]?.id}`} className="card-box">
+            <Link href={`/posts/${article[4]?.id}`} className="card-box">
               <img src={article[4]?.jetpack_featured_media_url} alt="" />
               <div className="group-text">
                 <p className="text-1">{article[4]?.title.rendered}</p>
@@ -80,8 +81,8 @@ const SectionFour = async () => {
                   })}
                 </p>
               </div>
-            </a>
-            <a href={`/posts/${article[5]?.id}`} className="card-box">
+            </Link>
+            <Link href={`/posts/${article[5]?.id}`} className="card-box">
               <img src={article[5]?.jetpack_featured_media_url} alt="" />
               <div className="group-text">
                 <p className="text-1">{article[5]?.title.rendered}</p>
@@ -93,8 +94,8 @@ const SectionFour = async () => {
                   })}
                 </p>
               </div>
-            </a>
-            <a href={`/posts/${article[6]?.id}`} className="card-box">
+            </Link>
+            <Link href={`/posts/${article[6]?.id}`} className="card-box">
               <img src={article[6]?.jetpack_featured_media_url} alt="" />
               <div className="group-text">
                 <p className="text-1">{article[6]?.title.rendered}</p>
@@ -106,13 +107,13 @@ const SectionFour = async () => {
                   })}
                 </p>
               </div>
-            </a>
+            </Link>
           </div>
         </div>
 
-        <a href="/blog" className="button">
+        <Link href="/blog" className="button">
           Lihat semua
-        </a>
+        </Link>
       </div>
 
       <div className="wrapper-mobile">

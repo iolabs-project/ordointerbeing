@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+
 const MusicCard = ({ id,title, desc, content, img }) => {
   const capitalizeWords = (str) => {
     return str
@@ -28,8 +30,8 @@ const MusicCard = ({ id,title, desc, content, img }) => {
   };
   return (
     <div className="music-card">
-      <img src={img} alt="" />
-      <a href={`/posts/${id}`}  className="music-title">{titleClean}</a>
+      <img src={img} alt={titleClean} loading="lazy" decoding="async" />
+      <Link href={`/posts/${id}`}  className="music-title">{titleClean}</Link>
       <p className="music-description">{descClean}</p>
       {/* <button className="music-link" onClick={handleDownload}>
         Download MP3

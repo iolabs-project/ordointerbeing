@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import NavbarAboutDropdownDesktop from "./NavbarAboutDropdownDesktop";
 import NavbarAboutDropdownMobile from "./NavbarAboutDropdownMobile";
 import NavbarPraktikDropdownDesktop from "./NavbarPraktikDropdownDesktop";
@@ -14,10 +15,10 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="wrapper">
-        <a className="left-side" href="/">
+        <Link className="left-side" href="/">
           <img src="/assets/navbar-logo.png" alt="Navbar logo" />
           <p className="text-1">Komunitas Zen Plum Village</p>
-        </a>
+        </Link>
 
         <div className="mobile-wrapper">
           {/* Hamburger Menu Button */}
@@ -40,10 +41,10 @@ const Navbar = () => {
           <NavbarAboutDropdownDesktop />
           <NavbarPraktikDropdownDesktop />
           <div className="tabs">
-            <a href="/blog">Blog</a>
+            <Link href="/blog">Blog</Link>
           </div>
           <div className="tabs">
-            <a href="/jadwal">Jadwal</a>
+            <Link href="/jadwal">Jadwal</Link>
           </div>
           {/* <div className="tabs">
             <a href="#">Kontak</a>
@@ -57,10 +58,10 @@ const Navbar = () => {
             <NavbarAboutDropdownMobile />
             <NavbarPraktikDropdownMobile />
             <div className="mobile-tab">
-              <a href="/blog">Blog</a>
+              <Link href="/blog">Blog</Link>
             </div>
             <div className="mobile-tab">
-              <a href="/jadwal">Jadwal</a>
+              <Link href="/jadwal">Jadwal</Link>
             </div>
             <div className="mobile-tab">
               <a href="#">Kontak</a>

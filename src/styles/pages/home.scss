@@ -7,6 +7,7 @@
   .hero-img {
     position: relative;
     overflow: hidden;
+    height: 90vh;
 
     // Fix slick carousel whitespace
     .slick-slider {
@@ -25,7 +26,8 @@
 
     img {
       width: 100%;
-      height: 90vh;
+      height: 100%;
+      object-fit: cover;
       display: block;
     }
 
