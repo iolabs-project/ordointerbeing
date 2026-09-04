@@ -13,6 +13,11 @@
     line-height: 1.7;
   }
 
+  iframe {
+    width: 100%;
+    height: 500px;
+  }
+
   .hero-figure {
     width: 100%;
     display: flex;
@@ -41,16 +46,18 @@
 
     .hero-text {
       position: absolute;
-      bottom: 50%;
+      top: 50%;
       left: 50%;
-      transform: translate(-50%, 50%);
+      transform: translate(-50%, -50%);
       color: #fff8ef;
       font-family: $third-font;
-      font-size: 5rem;
+      font-size: clamp(1.25rem, 5vw, 5rem);
       font-weight: bold;
       text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.7);
       z-index: 1;
       text-align: center;
+      width: 90%;
+      line-height: 1.2;
     }
   }
 
@@ -461,7 +468,7 @@
             align-items: center;
             gap: 10px;
             width: 100%;
-            padding: 40px 20px;
+            padding: 40px 0px;
             border-radius: 15px;
             background-color: #f4ede4;
             text-decoration: none;
@@ -573,6 +580,11 @@
 
 @media screen and (max-width: 430px) {
   .post-section {
+    iframe {
+      width: 100%;
+      height: 200px;
+    }
+
     .container {
       flex-direction: column;
       gap: 0;

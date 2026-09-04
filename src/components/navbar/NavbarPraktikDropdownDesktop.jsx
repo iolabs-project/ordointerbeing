@@ -35,7 +35,7 @@ const praktikItems = [
     id: "7",
     label: "Latihan Dasar",
     subtitle: "latihan dasar",
-    href: "/blog?category=7",
+    href: "/blog/latihan-dasar",
     external: false,
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
@@ -47,7 +47,7 @@ const praktikItems = [
     id: "116",
     label: "Wejangan Dharma",
     subtitle: "Video ceramah beserta subtitle",
-    href: "/blog?category=116",
+    href: "/blog/wejangan-dharma",
     external: false,
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -61,7 +61,7 @@ const praktikItems = [
     id: "596",
     label: "Menyentuh Bumi",
     subtitle: "Teks panduan menyentuh bumi",
-    href: "/blog?category=596",
+    href: "/blog/menyentuh-bumi",
     external: false,
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -75,7 +75,7 @@ const praktikItems = [
     id: "512",
     label: "Seremoni",
     subtitle: "Berbagai seremoni",
-    href: "/blog?category=512",
+    href: "/blog/seremoni",
     external: false,
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -89,7 +89,7 @@ const praktikItems = [
     id: "215",
     label: "Lagu",
     subtitle: "audio lagu dan lirik latihan hidup sadar",
-    href: "/blog?category=215",
+    href: "/blog/lagu",
     external: false,
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -103,7 +103,7 @@ const praktikItems = [
     id: "9999",
     label: "Aplikasi Meditasi",
     subtitle: null,
-    href: "/blog?category=9999",
+    href: "/blog/aplikasi-meditasi",
     external: false,
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -116,7 +116,7 @@ const praktikItems = [
     id: "6",
     label: "Sutra Utama",
     subtitle: "sutra utama tradisi Zen Plum Village",
-    href: "/blog?category=6",
+    href: "/blog/sutra-utama",
     external: false,
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -129,7 +129,7 @@ const praktikItems = [
     id: "244",
     label: "Kaligrafi",
     subtitle: "Kaligrafi untuk latihan",
-    href: "/blog?category=244",
+    href: "/blog/kaligrafi",
     external: false,
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
