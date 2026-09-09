@@ -17,7 +17,7 @@ const HeroCarouselClient = ({ posts }) => {
   return (
     <Slider {...carouselSettings}>
       {posts.map((post, index) => (
-        <Link key={post.id} href={`/posts/${post.id}`} className="hero-img">
+        <Link key={post.id} href={`/posts/${post.slug}`} className="hero-img">
           <Image
             src={post.jetpack_featured_media_url}
             alt={post.title.rendered}

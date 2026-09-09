@@ -7,7 +7,7 @@ const HeroSection = async () => {
     per_page: 20,
     categories: "155,124,165",
     orderby: "date",
-    _fields: "id,title,date,jetpack_featured_media_url",
+    _fields: "id,slug,title,date,jetpack_featured_media_url",
   });
 
   

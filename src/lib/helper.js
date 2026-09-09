@@ -24,6 +24,7 @@ export async function apiFetch(path, filters = {}) {
   if (typeof window === "undefined") {
     if (path === "wp/posts/most-viewed") return wp.getMostViewedPosts();
     if (path === "wp/posts") return wp.getPosts(filters);
+    if (path.startsWith("wp/posts/slug/")) return wp.getPostBySlug(path.slice("wp/posts/slug/".length));
     if (path.startsWith("wp/posts/")) return wp.getPostById(path.slice("wp/posts/".length));
     if (path === "wp/events") return wp.getEvents(filters);
     if (path.startsWith("wp/events/")) return wp.getEventBySlug(path.slice("wp/events/".length));

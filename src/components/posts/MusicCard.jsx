@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 
-const MusicCard = ({ id,title, desc, content, img }) => {
+const MusicCard = ({ slug, title, desc, content, img }) => {
   const capitalizeWords = (str) => {
     return str
       .split("-")
@@ -31,7 +31,7 @@ const MusicCard = ({ id,title, desc, content, img }) => {
   return (
     <div className="music-card">
       <img src={img} alt={titleClean} loading="lazy" decoding="async" />
-      <Link href={`/posts/${id}`}  className="music-title">{titleClean}</Link>
+      <Link href={`/posts/${slug}`}  className="music-title">{titleClean}</Link>
       <p className="music-description">{descClean}</p>
       {/* <button className="music-link" onClick={handleDownload}>
         Download MP3

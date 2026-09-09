@@ -11,11 +11,11 @@ import { apiFetch } from "@/lib/helper";
 export async function generateStaticParams() {
   const data = await apiFetch("wp/posts", {
     per_page: 20,
-    _fields: "id",
+    _fields: "slug",
     orderby: "date",
   });
   const posts = data?.posts || data || [];
-  return posts.map((post) => ({ id: String(post.id) }));
+  return posts.map((post) => ({ slug: post.slug }));
 }
 
 function getPrimaryCategory(embedded) {
@@ -24,14 +24,14 @@ function getPrimaryCategory(embedded) {
 }
 
 export default async function Post({ params }) {
-  const { id } = await params;
+  const { slug } = await params;
 
   // Parallelize all API calls instead of sequential awaits
   const [post, infosData, musicsData] = await Promise.all([
-    apiFetch(`wp/posts/${id}`),
+    apiFetch(`wp/posts/slug/${slug}`),
     apiFetch('wp/posts', {
       per_page: 2,
-      _fields: "id,title,date,categories,jetpack_featured_media_url",
+      _fields: "id,slug,title,date,categories,jetpack_featured_media_url",
       orderby: "date",
       _embed: "wp:term",
     }),
@@ -39,7 +39,7 @@ export default async function Post({ params }) {
       per_page: 2,
       categories: 215,
       orderby: "date",
-      _fields: "id,title,excerpt,content,jetpack_featured_media_url",
+      _fields: "id,slug,title,excerpt,content,jetpack_featured_media_url",
     }),
   ]);
 
@@ -104,7 +104,7 @@ export default async function Post({ params }) {
                 {infos.map((info) => (
                   <InfoCard
                     key={info.id}
-                    id={info.id}
+                    slug={info.slug}
                     title={info.title.rendered}
                     img={info.jetpack_featured_media_url || ""}
                     date={new Date(info.date).toLocaleDateString("en-US", {
@@ -128,14 +128,14 @@ export default async function Post({ params }) {
                 {musics.map((music) => (
                   <MusicCard
                     key={music.id}
-                    id={music.id}
+                    slug={music.slug}
                     title={music.title.rendered}
                     desc={music.excerpt.rendered}
                     content={music.content.rendered}
                     img={music.jetpack_featured_media_url || "/assets/default-music.png"}
                   />
                 ))}
-            </div>  
+            </div>
           </div>
           <div className="separator"></div>
           <div className="facebook-box">

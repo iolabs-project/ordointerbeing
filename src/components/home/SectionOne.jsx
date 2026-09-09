@@ -1,13 +1,18 @@
 import React from "react";
 import Link from "next/link";
+import { getPostById } from "@/lib/wp";
 
-const SectionOne = () => {
+const SectionOne = async () => {
+  // Fetch slug for the "Tentang Plum Village" post (ID 271)
+  const aboutPost = await getPostById(271);
+  const aboutSlug = aboutPost?.slug || "271";
+
   return (
     <div className="section-one">
       <div className="wrapper">
         <p className="text-1">Selamat Datang di Zen Plum Village Indonesia</p>
         <p className="text-2">
-          Plum Village Indonesia adalah komunitas kewawasan (mindfulness
+          Plum Village Indonesia adalah komunitas kewawasan (mindfulness
           community) dari ajaran Mahabiksu Zen Thich Nhat
           <br />
           Hanh [一行禪師] tentang praktik hidup sadar atau kewawasan [smrti,
@@ -20,7 +25,7 @@ const SectionOne = () => {
         </p>
 
         <div className="wrapper-button">
-          <Link href="/posts/271" className="button">
+          <Link href={`/posts/${aboutSlug}`} className="button">
             Tentang Plum Village
           </Link>
           <a href="https://zenplumvillage.net/" className="button">
@@ -35,7 +40,7 @@ const SectionOne = () => {
       <div className="wrapper-mobile">
         <p className="text-1">Selamat Datang di Zen Plum Village Indonesia</p>
         <p className="text-2">
-          Plum Village Indonesia adalah komunitas kewawasan (mindfulness
+          Plum Village Indonesia adalah komunitas kewawasan (mindfulness
           community) dari ajaran Mahabiksu Zen Thich Nhat
           Hanh [一行禪師] tentang praktik hidup sadar atau kewawasan [smrti,
           正念] dalam kehidupan sehari-hari.
@@ -48,7 +53,7 @@ const SectionOne = () => {
         </p>
 
         <div className="wrapper-button">
-          <Link href="/posts/271" className="button">
+          <Link href={`/posts/${aboutSlug}`} className="button">
             Tentang Plum Village
           </Link>
           <a href="https://zenplumvillage.net/" className="button">

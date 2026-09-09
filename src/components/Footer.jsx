@@ -130,7 +130,7 @@ const Footer = async () => {
               <p className="title">Recent Post</p>
               <div className="post-cards">
                 {recentPosts.map((post) => (
-                  <a key={post.id} href={`/posts/${post.id}`} className="post-card">
+                  <a key={post.id} href={`/posts/${post.slug}`} className="post-card">
                     <img
                       src={post.jetpack_featured_media_url || "/assets/placeholder.jpg"}
                       alt={post.title.rendered}
@@ -148,7 +148,7 @@ const Footer = async () => {
               <div className="post-cards">
                 {mostViewedPosts.length > 0 ? (
                   mostViewedPosts.slice(0, 5).map((post) => (
-                    <a key={post.id} href={`/posts/${post.id}`} className="post-card">
+                    <a key={post.id} href={`/posts/${post.slug}`} className="post-card">
                       {post.jetpack_featured_media_url ? (
                         <img
                           src={post.jetpack_featured_media_url}

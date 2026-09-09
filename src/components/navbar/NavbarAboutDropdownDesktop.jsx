@@ -12,7 +12,7 @@ const NavbarAboutDropdownDesktop = () => {
       const filter = {
         categories: 155,
         exclude: 6348,
-        $_fields: "id,title,categories",
+        $_fields: "id,slug,title,categories",
         per_page: 100,
       };
       try {
@@ -31,7 +31,7 @@ const NavbarAboutDropdownDesktop = () => {
       {isOpen && data.length > 0 && (
         <div className="dropdown-menu">
           {data.map((post) => (
-            <a key={post.id} href={`/posts/${post.id}`} className="dropdown-item">
+            <a key={post.id} href={`/posts/${post.slug}`} className="dropdown-item">
               {post.title.rendered}
             </a>
           ))}

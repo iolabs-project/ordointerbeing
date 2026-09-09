@@ -26,9 +26,21 @@ export async function getPosts(filters = {}) {
 
 export async function getPostById(id) {
   try {
-    const res = await fetch(`${WP_URL}posts/${id}?_embed&_fields=id,title,content,date,jetpack_featured_media_url`, FETCH_OPTIONS);
+    const res = await fetch(`${WP_URL}posts/${id}?_embed&_fields=id,slug,title,content,date,jetpack_featured_media_url`, FETCH_OPTIONS);
     if (!res.ok) return { error: "Failed to fetch post" };
     return await res.json();
+  } catch (err) {
+    return { error: err.message || "Failed to fetch post" };
+  }
+}
+
+export async function getPostBySlug(slug) {
+  try {
+    const res = await fetch(`${WP_URL}posts?slug=${encodeURIComponent(slug)}&_embed&_fields=id,slug,title,content,date,jetpack_featured_media_url`, FETCH_OPTIONS);
+    if (!res.ok) return { error: "Failed to fetch post" };
+    const data = await res.json();
+    if (!data || data.length === 0) return { error: "Post not found" };
+    return data[0];
   } catch (err) {
     return { error: err.message || "Failed to fetch post" };
   }

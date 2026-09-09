@@ -1,8 +1,8 @@
 "use client";
 
-const NavbarSearchResult = ({ id,title}) => {
+const NavbarSearchResult = ({ slug, title}) => {
   function onClickHandler() {
-    window.location.href = `/posts/${id}`;
+    window.location.href = `/posts/${slug}`;
   }
 
   return <div className="search-result-item" onClick={onClickHandler}>

@@ -27,7 +27,7 @@ const NavbarSearchMobile = () => {
           search: q,
           search_columns: "post_title", 
           per_page: 5,
-          $_fields: "id,title",
+          $_fields: "id,slug,title",
         });
 
         if (!cancelled) {
@@ -66,7 +66,7 @@ const NavbarSearchMobile = () => {
           {results.map((post) => (
             <NavbarSearchResult
               key={post.id}
-              id={post.id}
+              slug={post.slug}
               title={post.title.rendered}
             />
           ))}

@@ -7,7 +7,7 @@ const SectionFour = async () => {
     per_page: 7,
     categories: 124,
     orderby: "date",
-    _fields: "id,title,date,jetpack_featured_media_url",
+    _fields: "id,slug,title,date,jetpack_featured_media_url",
   });
 
   let article = response?.posts || [];
@@ -21,7 +21,7 @@ const SectionFour = async () => {
 
         <div className="bottom">
           <div className="left">
-            <Link href={`/posts/${article[1]?.id}`} className="card-box">
+            <Link href={`/posts/${article[1]?.slug}`} className="card-box">
               <img src={article[1]?.jetpack_featured_media_url} alt="" />
               <div className="group-text">
                 <p className="text-1">{article[1]?.title.rendered}</p>
@@ -34,7 +34,7 @@ const SectionFour = async () => {
                 </p>
               </div>
             </Link>
-            <Link href={`/posts/${article[2]?.id}`} className="card-box">
+            <Link href={`/posts/${article[2]?.slug}`} className="card-box">
               <img src={article[2]?.jetpack_featured_media_url} alt="" />
               <div className="group-text">
                 <p className="text-1">{article[2]?.title.rendered}</p>
@@ -47,7 +47,7 @@ const SectionFour = async () => {
                 </p>
               </div>
             </Link>
-            <Link href={`/posts/${article[3]?.id}`} className="card-box">
+            <Link href={`/posts/${article[3]?.slug}`} className="card-box">
               <img src={article[3]?.jetpack_featured_media_url} alt="" />
               <div className="group-text">
                 <p className="text-1">{article[3]?.title.rendered}</p>
@@ -63,13 +63,13 @@ const SectionFour = async () => {
             </Link>
           </div>
           <div className="middle">
-            <Link href={`/posts/${article[0]?.id}`}>
+            <Link href={`/posts/${article[0]?.slug}`}>
               <img src={article[0]?.jetpack_featured_media_url} alt="" />
               <p className="text-1">{article[0]?.title.rendered}</p>
             </Link>
           </div>
           <div className="right">
-            <Link href={`/posts/${article[4]?.id}`} className="card-box">
+            <Link href={`/posts/${article[4]?.slug}`} className="card-box">
               <img src={article[4]?.jetpack_featured_media_url} alt="" />
               <div className="group-text">
                 <p className="text-1">{article[4]?.title.rendered}</p>
@@ -82,7 +82,7 @@ const SectionFour = async () => {
                 </p>
               </div>
             </Link>
-            <Link href={`/posts/${article[5]?.id}`} className="card-box">
+            <Link href={`/posts/${article[5]?.slug}`} className="card-box">
               <img src={article[5]?.jetpack_featured_media_url} alt="" />
               <div className="group-text">
                 <p className="text-1">{article[5]?.title.rendered}</p>
@@ -95,7 +95,7 @@ const SectionFour = async () => {
                 </p>
               </div>
             </Link>
-            <Link href={`/posts/${article[6]?.id}`} className="card-box">
+            <Link href={`/posts/${article[6]?.slug}`} className="card-box">
               <img src={article[6]?.jetpack_featured_media_url} alt="" />
               <div className="group-text">
                 <p className="text-1">{article[6]?.title.rendered}</p>

@@ -206,7 +206,7 @@ export default function BlogContent({ initialCategory = null }) {
           }
         } else {
           const filter = {
-            _fields: "id,title,excerpt,date,categories,jetpack_featured_media_url",
+            _fields: "id,slug,title,excerpt,date,categories,jetpack_featured_media_url",
             per_page: postsPerPage,
             page: currentPage,
             ...(activeCategory && { categories: activeCategory }),
@@ -383,7 +383,7 @@ export default function BlogContent({ initialCategory = null }) {
           <div className="posts-grid">
             {posts.map((post) => (
               <div key={post.id} className="post-card">
-                <Link href={`/posts/${post.id}`} className="card-image-link">
+                <Link href={`/posts/${post.slug}`} className="card-image-link">
                   <Image
                     src={getPostImage(post)}
                     alt={post.title?.rendered || "Post"}
@@ -394,7 +394,7 @@ export default function BlogContent({ initialCategory = null }) {
                   />
                 </Link>
                 <div className="card-content">
-                  <Link href={`/posts/${post.id}`} className="card-title">
+                  <Link href={`/posts/${post.slug}`} className="card-title">
                     {post.title?.rendered}
                   </Link>
                   <p className="card-excerpt">
