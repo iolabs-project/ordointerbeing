@@ -7,6 +7,41 @@ import PostContent from "@/components/posts/PostContent";
 import ShareButtons from "@/components/posts/ShareButtons";
 import { apiFetch } from "@/lib/helper";
 
+// Generate dynamic OG metadata for each post
+export async function generateMetadata({ params }) {
+  const { slug } = await params;
+  const post = await apiFetch(`wp/posts/slug/${slug}`);
+
+  if (!post || post.error || !post.title) {
+    return { title: "Post Not Found" };
+  }
+
+  const title = post.title.rendered;
+  const description = post.excerpt?.rendered
+    ? post.excerpt.rendered.replace(/<[^>]+>/g, "").slice(0, 160)
+    : "";
+  const image = post.jetpack_featured_media_url || "";
+  const url = `https://ordointerbeing.com/posts/${slug}`;
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      url,
+      type: "article",
+      images: image ? [{ url: image, width: 1200, height: 630 }] : [],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: image ? [image] : [],
+    },
+  };
+}
+
 // Pre-render the 20 most recent posts at build time
 export async function generateStaticParams() {
   const data = await apiFetch("wp/posts", {

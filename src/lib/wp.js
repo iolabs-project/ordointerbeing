@@ -2,7 +2,7 @@ const WP_URL = "https://cms.ordointerbeing.id/wp-json/wp/v2/";
 const CUSTOM_URL = "https://cms.ordointerbeing.id/wp-json/custom/v1/";
 
 // Cache all WordPress API responses for 5 minutes (ISR)
-const FETCH_OPTIONS = { next: { revalidate: 300 } };
+const FETCH_OPTIONS = { next: { revalidate: 60 } };
 
 export async function getPosts(filters = {}) {
   try {
@@ -26,7 +26,7 @@ export async function getPosts(filters = {}) {
 
 export async function getPostById(id) {
   try {
-    const res = await fetch(`${WP_URL}posts/${id}?_embed&_fields=id,slug,title,content,date,jetpack_featured_media_url`, FETCH_OPTIONS);
+    const res = await fetch(`${WP_URL}posts/${id}?_embed`, FETCH_OPTIONS);
     if (!res.ok) return { error: "Failed to fetch post" };
     return await res.json();
   } catch (err) {
@@ -36,7 +36,7 @@ export async function getPostById(id) {
 
 export async function getPostBySlug(slug) {
   try {
-    const res = await fetch(`${WP_URL}posts?slug=${encodeURIComponent(slug)}&_embed&_fields=id,slug,title,content,date,jetpack_featured_media_url`, FETCH_OPTIONS);
+    const res = await fetch(`${WP_URL}posts?slug=${encodeURIComponent(slug)}&_embed`, FETCH_OPTIONS);
     if (!res.ok) return { error: "Failed to fetch post" };
     const data = await res.json();
     if (!data || data.length === 0) return { error: "Post not found" };
