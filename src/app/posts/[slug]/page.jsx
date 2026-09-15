@@ -5,7 +5,9 @@ import InfoCard from "@/components/posts/InfoCard";
 import MusicCard from "@/components/posts/MusicCard";
 import PostContent from "@/components/posts/PostContent";
 import ShareButtons from "@/components/posts/ShareButtons";
+import ViewCounter from "@/components/posts/ViewCounter";
 import { apiFetch } from "@/lib/helper";
+import { getPostViews } from "@/lib/wp";
 
 // Generate dynamic OG metadata for each post
 export async function generateMetadata({ params }) {
@@ -86,6 +88,9 @@ export default async function Post({ params }) {
     notFound();
   }
 
+  // Fetch view count from WordPress Post Views Counter plugin
+  const views = await getPostViews(post.id);
+
   //* Post Section Processing
   const heroURL = post.jetpack_featured_media_url || "";
   let content = post.content?.rendered || "";
@@ -126,6 +131,7 @@ export default async function Post({ params }) {
       <div className="container">
         <div className="left">
           <PostContent content={content} />
+          <ViewCounter slug={slug} postId={post.id} initialViews={views} />
           <ShareButtons title={post.title.rendered} />
         </div>
         <div className="right">

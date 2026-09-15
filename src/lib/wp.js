@@ -1,5 +1,6 @@
 const WP_URL = "https://cms.ordointerbeing.id/wp-json/wp/v2/";
 const CUSTOM_URL = "https://cms.ordointerbeing.id/wp-json/custom/v1/";
+const PVC_URL = "https://cms.ordointerbeing.id/wp-json/post-views-counter/";
 
 // Cache all WordPress API responses for 5 minutes (ISR)
 const FETCH_OPTIONS = { next: { revalidate: 60 } };
@@ -43,6 +44,17 @@ export async function getPostBySlug(slug) {
     return data[0];
   } catch (err) {
     return { error: err.message || "Failed to fetch post" };
+  }
+}
+
+export async function getPostViews(id) {
+  try {
+    const res = await fetch(`${PVC_URL}get-post-views/${id}`, FETCH_OPTIONS);
+    if (!res.ok) return 0;
+    const data = await res.json();
+    return typeof data === "number" ? data : 0;
+  } catch {
+    return 0;
   }
 }
 
