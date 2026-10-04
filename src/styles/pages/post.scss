@@ -101,7 +101,8 @@
           height: 500px;
         }
 
-        img {
+        // :where keeps specificity unchanged; floated images keep their WP size
+        &:where(:not(.alignleft, .alignright)) img {
           width: 100%;
           height: auto;
           margin-bottom: 20px;
@@ -116,6 +117,15 @@
         img.portrait-image {
           max-width: 400px;
           width: auto;
+        }
+
+        &.wp-block-audio {
+          margin-bottom: 30px;
+          audio {
+            width: 100%;
+            border-radius: 8px;
+            display: block;
+          }
         }
 
         sup {
@@ -141,8 +151,48 @@
         }
       }
 
+      // WordPress floated images (e.g. app icons) at the size set in WP;
+      // display: table keeps the caption as wide as the image
+      figure.alignleft,
+      figure.alignright {
+        display: table;
+        width: auto;
+
+        img {
+          max-width: 30vw; // leaves room for text beside it on phones
+          height: auto;
+          display: block;
+        }
+
+        figcaption {
+          display: table-caption;
+          caption-side: bottom;
+          font-size: 12px;
+          line-height: 1.4;
+          color: #717171;
+          text-align: center;
+          margin-top: 6px;
+        }
+      }
+
+      figure.alignleft {
+        float: left;
+        margin: 0.3em 1.5em 1em 0;
+      }
+
+      figure.alignright {
+        float: right;
+        margin: 0.3em 0 1em 1.5em;
+      }
+
+      // Each "title + floated image" block starts below the previous float
+      p:has(+ .wp-block-image) {
+        clear: both;
+      }
+
       h3,
       h2 {
+        clear: both;
         margin-bottom: 15px;
         font-size: 25px;
 
@@ -535,6 +585,7 @@
   }
 
   .view-counter {
+    clear: both;
     display: flex;
     align-items: center;
     gap: 14px;

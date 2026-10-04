@@ -6,7 +6,7 @@ import MusicCard from "@/components/posts/MusicCard";
 import PostContent from "@/components/posts/PostContent";
 import ShareButtons from "@/components/posts/ShareButtons";
 import ViewCounter from "@/components/posts/ViewCounter";
-import { apiFetch } from "@/lib/helper";
+import { apiFetch, normalizeMediaUrls } from "@/lib/helper";
 import { getPostViews } from "@/lib/wp";
 
 // Generate dynamic OG metadata for each post
@@ -93,7 +93,7 @@ export default async function Post({ params }) {
 
   //* Post Section Processing
   const heroURL = post.jetpack_featured_media_url || "";
-  let content = post.content?.rendered || "";
+  let content = normalizeMediaUrls(post.content?.rendered);
 
   const author = post._embedded?.author?.[0]?.name || "Unknown";
   const date = new Date(post.date).toLocaleDateString("en-US", {

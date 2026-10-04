@@ -25,6 +25,11 @@ export default function PostContent({ content }) {
   }, [content]);
 
   const checkImageOrientation = (img) => {
+    // Skip aligned images (e.g. app icons, thumbnail floats)
+    if (img.closest?.(".alignleft, .alignright, figure.alignleft, figure.alignright")) {
+      return;
+    }
+
     const aspectRatio = img.naturalWidth / img.naturalHeight;
 
     // If image is portrait (height > width) or square (roughly equal)
