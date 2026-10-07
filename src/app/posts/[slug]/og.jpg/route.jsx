@@ -1,6 +1,10 @@
 import sharp from "sharp";
 import { apiFetch, normalizeMediaUrl } from "@/lib/helper";
 
+// ISR (revalidates with the 60s post data): served from cache like a static file (Content-Length, no cold sharp run),
+// which link-preview crawlers like WhatsApp need; dynamic responses were streamed without it.
+export const dynamic = "force-static";
+
 // Link-preview image: featured image cropped to 1200x630 JPEG.
 // Raw uploads can be multi-MB PNGs, which WhatsApp silently drops (~300 KB limit).
 export async function GET(req, { params }) {
@@ -9,9 +13,10 @@ export async function GET(req, { params }) {
   const src = normalizeMediaUrl(post?.jetpack_featured_media_url);
   if (!src) return new Response("Not found", { status: 404 });
 
-  // no-store: originals can exceed Next's 2 MB data-cache limit; the CDN caches the output instead
+  // no-store: originals can exceed Next's 2 MB data-cache limit; ISR caches the output instead
   const res = await fetch(src, { cache: "no-store" });
-  if (!res.ok) return new Response("Image unavailable", { status: 502 });
+  // Throw instead of returning an error response so ISR doesn't cache the failure
+  if (!res.ok) throw new Error(`OG source image ${res.status}: ${src}`);
 
   const jpeg = await sharp(Buffer.from(await res.arrayBuffer()))
     .flatten({ background: "#ffffff" })
@@ -20,9 +25,6 @@ export async function GET(req, { params }) {
     .toBuffer();
 
   return new Response(jpeg, {
-    headers: {
-      "Content-Type": "image/jpeg",
-      "Cache-Control": "public, max-age=86400, s-maxage=86400, stale-while-revalidate=604800",
-    },
+    headers: { "Content-Type": "image/jpeg", "Content-Length": String(jpeg.length) },
   });
 }
