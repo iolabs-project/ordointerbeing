@@ -6,7 +6,7 @@ import MusicCard from "@/components/posts/MusicCard";
 import PostContent from "@/components/posts/PostContent";
 import ShareButtons from "@/components/posts/ShareButtons";
 import ViewCounter from "@/components/posts/ViewCounter";
-import { apiFetch, normalizeMediaUrls } from "@/lib/helper";
+import { apiFetch, decodeEntities, normalizeMediaUrls } from "@/lib/helper";
 import { getPostViews } from "@/lib/wp";
 
 // Generate dynamic OG metadata for each post
@@ -18,28 +18,36 @@ export async function generateMetadata({ params }) {
     return { title: "Post Not Found" };
   }
 
-  const title = post.title.rendered;
-  const description = post.excerpt?.rendered
-    ? post.excerpt.rendered.replace(/<[^>]+>/g, "").slice(0, 160)
-    : "";
-  const image = post.jetpack_featured_media_url || "";
-  const url = `https://ordointerbeing.com/posts/${slug}`;
+  const title = decodeEntities(post.title.rendered);
+  const description = decodeEntities(post.excerpt?.rendered?.replace(/<[^>]+>/g, " "))
+    .replace(/\s+/g, " ")
+    .trim()
+    .slice(0, 160);
+  const url = `/posts/${slug}`;
+  // Resized via ./og.jpg; ?v busts crawler caches when the featured image is replaced
+  const images = post.jetpack_featured_media_url
+    ? [{ url: `${url}/og.jpg?v=${post.featured_media}`, width: 1200, height: 630, type: "image/jpeg", alt: title }]
+    : [];
 
   return {
     title,
     description,
+    alternates: { canonical: url },
     openGraph: {
       title,
       description,
       url,
+      siteName: "Komunitas Zen Plum Village",
+      locale: "id_ID",
       type: "article",
-      images: image ? [{ url: image, width: 1200, height: 630 }] : [],
+      publishedTime: post.date_gmt ? `${post.date_gmt}Z` : undefined,
+      images,
     },
     twitter: {
-      card: "summary_large_image",
+      card: images.length ? "summary_large_image" : "summary",
       title,
       description,
-      images: image ? [image] : [],
+      images,
     },
   };
 }

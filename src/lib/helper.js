@@ -43,6 +43,20 @@ export function normalizeMediaUrl(url) {
     .replace(/^http:\/\/cms\.ordointerbeing\.id\/wp-content\//, "https://cms.ordointerbeing.id/wp-content/");
 }
 
+/**
+ * Decodes HTML entities WordPress puts in rendered titles/excerpts (&#8217;, &amp;, ...)
+ * for plain-text contexts like meta tags.
+ */
+const NAMED_ENTITIES = { amp: "&", quot: '"', apos: "'", lt: "<", gt: ">", nbsp: " ", hellip: "…" };
+export function decodeEntities(str) {
+  if (!str) return "";
+  return str.replace(/&(#x[0-9a-f]+|#\d+|[a-z]+);/gi, (match, entity) => {
+    if (entity[0] !== "#") return NAMED_ENTITIES[entity.toLowerCase()] ?? match;
+    const code = entity[1].toLowerCase() === "x" ? parseInt(entity.slice(2), 16) : Number(entity.slice(1));
+    return code <= 0x10ffff ? String.fromCodePoint(code) : match;
+  });
+}
+
 export async function apiFetch(path, filters = {}) {
   // Server-side: call the WP API directly instead of looping back through
   // this app's own /api routes, which requires a server already listening

@@ -5,6 +5,8 @@ import Navbar from "../components/navbar/Navbar";
 import Footer from "../components/Footer";
 
 export const metadata = {
+  // Resolves relative og:image / og:url / canonical to absolute URLs
+  metadataBase: new URL("https://ordointerbeing.id"),
   title: "Komunitas Zen Plum Village",
   description: "Komunitas Zen Plum Village",
 };
