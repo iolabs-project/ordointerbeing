@@ -172,6 +172,10 @@
           color: #717171;
           text-align: center;
           margin-top: 6px;
+
+          sup {
+            margin-top: 0;
+          }
         }
       }
 
@@ -183,6 +187,17 @@
       figure.alignright {
         float: right;
         margin: 0.3em 0 1em 1.5em;
+      }
+
+      // Headings clear floats, so a float right before one has nothing beside
+      // it; show it as a centered block instead
+      .wp-block-image:has(+ h2, + h3) > figure:is(.alignleft, .alignright) {
+        float: none;
+        margin: 0 auto 30px;
+
+        img {
+          max-width: 100%;
+        }
       }
 
       // Each "title + floated image" block starts below the previous float
