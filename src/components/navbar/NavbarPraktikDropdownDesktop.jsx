@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-const praktikItems = [
+export const praktikItems = [
   {
     id: "kelas-moodle",
     label: "Kelas Moodle",
