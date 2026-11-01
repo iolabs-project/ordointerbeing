@@ -3,42 +3,7 @@
 @import "slick-carousel/slick/slick-theme.css";
 @import url('https://fonts.cdnfonts.com/css/google-sans');
 
-@font-face {
-  font-family: 'PP Fragment';
-  font-style: normal;
-  font-weight: 300;
-  font-display: swap;
-  src: url('/assets/fonts/PPFragment-GlareLight.woff') format('woff');
-}
-
-@font-face {
-  font-family: 'PP Fragment';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url('/assets/fonts/PPFragment-TextRegular.woff') format('woff'),
-       url('/assets/fonts/PPFragment-GlareRegular.woff') format('woff');
-}
-
-@font-face {
-  font-family: 'PP Fragment';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url('/assets/fonts/PPFragment-GlareExtraBold.woff') format('woff');
-}
-
-@font-face {
-  font-family: 'PP Fragment';
-  font-style: normal;
-  font-weight: 800;
-  font-display: swap;
-  src: url('/assets/fonts/PPFragment-GlareExtraBold.woff') format('woff');
-}
-
-// $primary-font: "Cormorant Garamond", serif;
-// $secondary-font: "Open Sans", sans-serif;
-$primary-font: 'PP Fragment', sans-serif;
+$primary-font: "Cormorant Garamond", serif;
 $secondary-font: "Open Sans", sans-serif;
 $third-font: 'Product Sans', sans-serif;
 @import "./global.scss";
